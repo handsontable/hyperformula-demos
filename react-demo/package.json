@@ -1,5 +1,6 @@
 {
-  "name": "hf-employee-table-react",
+  "name": "hyperformula-react-demo",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "keywords": [],
