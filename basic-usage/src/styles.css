@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  counter-reset: row-counter;
+  counter-reset: row-counter col-counter;
   padding: 15px;
 }
 
@@ -50,8 +50,22 @@ table tbody tr td:first-child span::before {
   left: -10px;
 }
 
-p.result {
-  margin-left: 15px;
+table thead tr th span::before {
+  counter-increment: col-counter;
+  content: counter(col-counter, upper-alpha);
+  display: inline-block;
+  width: 20px;
+  position: relative;
+  left: -10px;
+}
+
+#address-preview {
+  font-weight: bold;
+}
+
+div.result {
+  display: inline-block;
+  margin: 0 0 0 15px;
 }
 
 p.data-label {

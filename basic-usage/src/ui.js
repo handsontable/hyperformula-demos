@@ -5,11 +5,11 @@ import { hf, sheetId } from "./hyperformulaConfig";
  */
 export function bindEvents() {
   const calculateButton = document.querySelector("#calculate");
-  const formulaPreview = document.querySelector("#formula-preview");
+  const formulaPreview = document.querySelector("#address-preview");
   const calculationResult = document.querySelector("#result");
   const cellAddress = { sheet: sheetId, row: 0, col: 2 };
 
-  formulaPreview.innerText = hf.getCellFormula(cellAddress);
+  formulaPreview.innerText = hf.simpleCellAddressToString(cellAddress, sheetId);
 
   calculateButton.addEventListener("click", () => {
     calculationResult.innerText = hf.getCellValue(cellAddress);

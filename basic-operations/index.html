@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HyperFormula Basic Operations</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css"
+    />
+    <script src="https://gistcdn.rawgit.org/jansiegel/6bfc1a79debb6623c256171f26bfb13b/1c7d91eca116110d6e927df80c8bbe9de576b74e/hf-17-06.js"></script>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="example">
+      <div id="toolbar" class="container">
+        <div class="row">
+          <div class="column">
+            <select id="sheet-select">
+              <option value="" disabled selected>SheetName</option>
+            </select>
+            <select id="action-select">
+              <option value="" disabled selected>Select action</option>
+              <option value="add-sheet">Add sheet</option>
+              <option value="remove-sheet">Remove sheet</option>
+              <option value="add-rows">Add row(s)</option>
+              <option value="add-columns">Add column(s)</option>
+              <option value="remove-rows">Remove row(s)</option>
+              <option value="remove-columns">Remove column(s)</option>
+              <option value="get-value">Get value</option>
+              <option value="set-value">Set value</option> </select
+            ><br />
+          </div>
+        </div>
+
+        <div id="inputs" class="row">
+          <div class="column">
+            <input id="input-1" class="inline" />
+            <input id="input-2" class="inline middle" />
+            <button class="button run inline">
+              Run
+            </button>
+            <p id="error-message"></p>
+            <p id="disclaimer"></p>
+          </div>
+        </div>
+      </div>
+      <h6 id="preview-header">Data preview:</h6>
+      <div id="preview">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
