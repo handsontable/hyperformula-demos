@@ -10,13 +10,17 @@ const sheetName = hf.addSheet("main");
 const sheetId = hf.getSheetId(sheetName);
 
 // Fill the HyperFormula sheet with data.
-hf.setCellContents(
-  {
-    row: 0,
-    col: 0,
-    sheet: sheetId
-  },
-  tableData
-);
+reinitializeData();
 
-export { hf, sheetName, sheetId };
+function reinitializeData() {
+  hf.setCellContents(
+    {
+      row: 0,
+      col: 0,
+      sheet: sheetId
+    },
+    tableData
+  );
+}
+
+export { hf, sheetName, sheetId, reinitializeData };
