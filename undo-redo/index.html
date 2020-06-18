@@ -2,20 +2,27 @@
 <html>
   <head>
     <title>HyperFormula Undo/Redo</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
-		<script src="https://gistcdn.rawgit.org/jansiegel/6bfc1a79debb6623c256171f26bfb13b/1c7d91eca116110d6e927df80c8bbe9de576b74e/hf-17-06.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css"
+    />
+    <script src="https://gistcdn.rawgit.org/jansiegel/6bfc1a79debb6623c256171f26bfb13b/1c7d91eca116110d6e927df80c8bbe9de576b74e/hf-17-06.js"></script>
     <meta charset="UTF-8" />
   </head>
 
   <body>
     <div class="example">
-      <button id="run" class="button run">
+      <button id="remove-row" class="button run">
         Remove the second row
       </button>
-      <button id="reset" class="button button-outline reset">
+      <button id="undo" class="button button-outline undo">
         Undo
       </button>
+      <p id="info-box">&nbsp;</p>
       <table>
         <colgroup>
           <col style="width:40%" />
@@ -24,7 +31,7 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Year_1</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody></tbody>

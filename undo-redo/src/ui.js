@@ -1,21 +1,64 @@
-import { runCalculations, resetTable } from "./renderers";
+import { renderTable, clearInfo, displayInfo } from "./renderers";
 import { hf, sheetId } from "./hyperformulaConfig";
-import { tableData } from "./data";
 
 /**
  * Bind the events to the buttons.
  */
 export function bindEvents() {
-  const runButton = document.querySelector("#run");
-  const resetButton = document.querySelector("#reset");
+  const removeRowButton = document.querySelector("#remove-row");
+  const undoButton = document.querySelector("#undo");
 
-  runButton.addEventListener("click", () => {
-    runCalculations(hf, sheetId);
+  removeRowButton.addEventListener("click", () => {
+    removeSecondRow();
   });
 
-  resetButton.addEventListener("click", () => {
-    resetTable(tableData);
+  undoButton.addEventListener("click", () => {
+    undo();
   });
+}
+
+/**
+ * Remove the second row from the table.
+ */
+export function removeSecondRow() {
+  const filledRowCount = hf.getSheetDimensions(sheetId).height;
+
+  clearInfo();
+
+  if (filledRowCount < 2) {
+    displayInfo("There's not enough filled rows to perform this action.");
+
+    return;
+  }
+
+  hf.removeRows(sheetId, [1, 1]);
+  renderTable(true);
+}
+
+/**
+ * Run the HF undo action.
+ */
+export function undo() {
+  clearInfo();
+
+  // Workaround, to be removed:
+  if (hf._crudOperations.undoRedo.undoStack.length <= 2) {
+    displayInfo("There's nothing to undo.");
+
+    return;
+  }
+
+  // This should work after removing the workaround:
+  /*
+  if (!hf.isThereSomethingToUndo()) {
+    displayInfo("There's nothing to undo.");
+
+    return;
+  }
+  */
+
+  hf.undo();
+  renderTable();
 }
 
 export const ANIMATION_ENABLED = true;

@@ -1,6 +1,7 @@
 export const initializeHF = initSheetId => {
   const hf = window.HyperFormula.buildEmpty({
-    precisionRounding: 2
+    precisionRounding: 2,
+    licenseKey: "agpl-v3"
   });
 
   // Add a new sheet and get its id.

@@ -1,6 +1,7 @@
 export const initializeHF = (initSheetId: string) => {
   const hf = window.HyperFormula.buildEmpty({
-    precisionRounding: 2
+    precisionRounding: 2,
+    licenseKey: "agpl-v3"
   });
 
   // Add a new sheet and get its id.
@@ -19,7 +20,7 @@ export const initializeNamedExpressions = (
   sheetName: string
 ) => {
   const sheetId = hf.getSheetId(sheetName);
-  const { height } = hf.getSheetDimensions(sheetId);
+  const {height} = hf.getSheetDimensions(sheetId);
 
   // Add named expressions for the "TOTAL" row.
   hf.addNamedExpression(
