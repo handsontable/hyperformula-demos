@@ -13,19 +13,13 @@ export function renderTable() {
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
       const cellAddress = { sheet: sheetId, col, row };
-      const cellHasFormula = hf.doesCellHaveFormula(cellAddress);
-      const showFormula = cellHasFormula;
       let cellValue = "";
 
-      if (!hf.isCellEmpty(cellAddress) && !showFormula) {
+      if (!hf.isCellEmpty(cellAddress)) {
         cellValue = hf.getCellValue(cellAddress);
-      } else {
-        cellValue = hf.getCellFormula(cellAddress);
       }
 
-      newTbodyHTML += `<td class="${
-        cellHasFormula ? updatedCellClass : ""
-      }"><span>
+      newTbodyHTML += `<td class="${updatedCellClass}"><span>
       ${cellValue}
       </span></td>`;
     }
