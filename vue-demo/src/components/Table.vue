@@ -19,11 +19,11 @@
       </thead>
       <tbody>
         <tr v-for="(rows, rowIndex)  in data" :key="rowIndex">
-          <td v-for="(cell, cellIndex) in rows" :key="`${rowIndex},${cellIndex}`">{{cell}}</td>
+          <td v-for="(cell, cellIndex) in rows" :key="`${rowIndex},${cellIndex}`">{{ formatNumber(cell) }}</td>
         </tr>
         <tr class="bold">
           <td>Total</td>
-          <td v-for="(total, cellIndex) in totals" :key="cellIndex">{{ total }}</td>
+          <td v-for="(total, cellIndex) in totals" :key="cellIndex">{{ formatNumber(total) }}</td>
           <td/>
           <td/>
         </tr>
@@ -46,6 +46,18 @@ export default {
     },
     totals: {
       type: Array
+    }
+  },
+  methods: {
+    formatNumber(number) {
+      let numericValue = Number(number);
+      let value = number;
+
+      if (!isNaN(numericValue)) {
+        value = numericValue.toFixed(2);
+      }
+
+      return value;
     }
   }
 };

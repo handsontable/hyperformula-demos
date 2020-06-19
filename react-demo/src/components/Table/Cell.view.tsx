@@ -1,7 +1,16 @@
 import * as React from "react";
 
-export type CellProps = {};
+export type CellProps = {
+  children: string|number;
+};
 
 export const CellView: React.FC<CellProps> = ({ children }) => {
-  return <td>{children}</td>;
+  let numericValue: number = Number(children);
+  let value: number | string = children;
+
+  if (!isNaN(numericValue)) {
+    value = numericValue.toFixed(2);
+  }
+
+  return <td>{value}</td>;
 };
