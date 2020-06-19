@@ -22,11 +22,11 @@ export const initializeNamedExpressions = (hf, sheetName) => {
   // Add named expressions for the "TOTAL" row.
   hf.addNamedExpression(
     "Year_1",
-    `=SUM(${sheetName}!B1:${sheetName}!B${height})`
+    `=SUM(${sheetName}!$B$1:${sheetName}!$B$${height})`
   );
   hf.addNamedExpression(
     "Year_2",
-    `=SUM(${sheetName}!C1:${sheetName}!C${height})`
+    `=SUM(${sheetName}!$C$1:${sheetName}!$C$${height})`
   );
 };
 
