@@ -21,7 +21,7 @@ hf.setCellContents(
 );
 
 // Add named expressions for the "TOTAL" row.
-hf.addNamedExpression("Year_1", "=SUM(main!B1:main!B5)");
-hf.addNamedExpression("Year_2", "=SUM(main!C1:main!C5)");
+hf.addNamedExpression("Year_1", "=SUM(main!$B$1:main!$B$5)");
+hf.addNamedExpression("Year_2", "=SUM(main!$C$1:main!$C$5)");
 
 export { hf, sheetName, sheetId };

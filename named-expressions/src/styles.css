@@ -20,7 +20,8 @@ body {
   margin-bottom: 20px;
 }
 
-table tbody tr:last-child {
+table tbody tr:nth-child(4),
+table tbody tr:nth-child(5) {
   font-weight: 600;
 }
 
@@ -37,6 +38,7 @@ table tbody tr td,
 table tbody tr th {
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 table thead tr th:first-child {

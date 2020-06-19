@@ -1,4 +1,4 @@
-import { hf, sheetId, sheetName } from "./hyperformulaConfig";
+import { hf, sheetId } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
 
 /**
@@ -9,18 +9,9 @@ import { ANIMATION_ENABLED } from "./ui";
 export function renderTable(calculated = false) {
   const tbodyDOM = document.querySelector(".example tbody");
   const updatedCellClass = ANIMATION_ENABLED ? "updated-cell" : "";
-  const totals = [
-    "=myOneCell",
-    "=myTwoCells",
-    "=myOneColum",
-    "=myTwoColumns",
-    "=myOneRow",
-    "=myTwoRows"
-  ];
 
   const { height, width } = hf.getSheetDimensions(sheetId);
   let newTbodyHTML = "";
-  let totalRowsHTML = "";
 
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
@@ -45,44 +36,6 @@ export function renderTable(calculated = false) {
     newTbodyHTML += "</tr>";
   }
 
-  totalRowsHTML = `<tr>
-<td">
-  <span>${
-    calculated ? hf.calculateFormula(totals[0], sheetName) : totals[0]
-  }</span>
-</td>
-<td class="${updatedCellClass}">
-  <span>${
-    calculated ? hf.calculateFormula(totals[1], sheetName) : totals[1]
-  }</span>
-</td>
-<td class="${updatedCellClass}">
-  <span>${
-    calculated ? hf.calculateFormula(totals[2], sheetName) : totals[2]
-  }</span>
-</td>
-</tr>
-<tr>
-<td>
-  <span>${
-    calculated ? hf.calculateFormula(totals[0], sheetName) : totals[3]
-  }</span>
-</td>
-<td class="${updatedCellClass}">
-  <span>${
-    calculated ? hf.calculateFormula(totals[1], sheetName) : totals[4]
-  }</span>
-</td>
-<td class="${updatedCellClass}">
-  <span>${
-    calculated ? hf.calculateFormula(totals[2], sheetName) : totals[5]
-  }</span>
-</td>
-</tr>
-`;
-
-  newTbodyHTML += totalRowsHTML;
-
   tbodyDOM.innerHTML = newTbodyHTML;
 }
 
@@ -90,7 +43,6 @@ export function renderTable(calculated = false) {
  * Replace formulas with their results.
  */
 export function runCalculations() {
-  console.log(hf.getAllSheetsValues());
   renderTable(true);
 }
 
