@@ -23,6 +23,10 @@ export function renderTable(calculated = false) {
 
       if (!hf.isCellEmpty(cellAddress) && showFormula) {
         cellValue = hf.getCellValue(cellAddress);
+
+        if (!isNaN(cellValue)) {
+          cellValue = cellValue.toFixed(2);
+        }
       } else {
         cellValue = hf.getCellFormula(cellAddress);
       }
@@ -41,12 +45,16 @@ export function renderTable(calculated = false) {
 <td>TOTAL</td>
 <td class="${updatedCellClass}">
   <span>${
-    calculated ? hf.calculateFormula(totals[0], sheetName) : totals[0]
+    calculated
+      ? hf.calculateFormula(totals[0], sheetName).toFixed(2)
+      : totals[0]
   }</span>
 </td>
 <td class="${updatedCellClass}">
   <span>${
-    calculated ? hf.calculateFormula(totals[1], sheetName) : totals[1]
+    calculated
+      ? hf.calculateFormula(totals[1], sheetName).toFixed(2)
+      : totals[1]
   }</span>
 </td>
 <td colspan="2"></td>
