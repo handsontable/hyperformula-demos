@@ -41,21 +41,11 @@ export function removeSecondRow() {
 export function undo() {
   clearInfo();
 
-  // Workaround, to be removed:
-  if (hf._crudOperations.undoRedo.undoStack.length <= 2) {
-    displayInfo("There's nothing to undo.");
-
-    return;
-  }
-
-  // This should work after removing the workaround:
-  /*
   if (!hf.isThereSomethingToUndo()) {
     displayInfo("There's nothing to undo.");
 
     return;
   }
-  */
 
   hf.undo();
   renderTable();

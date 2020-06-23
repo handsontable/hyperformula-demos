@@ -1,4 +1,6 @@
 import { tableData } from "./data";
+import { CountHF } from "./countHFFunctionPlugin";
+import { countHFTranslations } from "./countHFTranslations";
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
@@ -19,8 +21,6 @@ hf.setCellContents(
   tableData
 );
 
-// Add named expressions for the "TOTAL" row.
-hf.addNamedExpression("Year_1", "=SUM(main!$B$1:main!$B$5)");
-hf.addNamedExpression("Year_2", "=SUM(main!$C$1:main!$C$5)");
+HyperFormula.registerFunctionPlugin(CountHF, countHFTranslations);
 
 export { hf, sheetName, sheetId };

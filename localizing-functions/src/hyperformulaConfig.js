@@ -1,13 +1,13 @@
 import { tableData } from "./data";
 
-//import frRf from....
-
 // register language
-HyperFormula.registerLanguage("frFR", frFR);
+HyperFormula.registerLanguage(
+  HyperFormula.languages.frFR.langCode,
+  HyperFormula.languages.frFR
+);
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
-  precisionRounding: 2,
   language: "frFR",
   licenseKey: "agpl-v3"
 });
@@ -25,5 +25,9 @@ hf.setCellContents(
   },
   tableData
 );
+
+// Add named expressions for the "TOTAL" row.
+hf.addNamedExpression("Year_1", "=SOMME(main!$B$1:main!$B$5)");
+hf.addNamedExpression("Year_2", "=SOMME(main!$C$1:main!$C$5)");
 
 export { hf, sheetName, sheetId };

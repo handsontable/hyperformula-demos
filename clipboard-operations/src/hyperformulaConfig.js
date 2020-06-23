@@ -2,7 +2,6 @@ import { tableData } from "./data";
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
-  precisionRounding: 2,
   licenseKey: "agpl-v3"
 });
 

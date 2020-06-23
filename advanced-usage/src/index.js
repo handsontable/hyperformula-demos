@@ -2,8 +2,6 @@ import { renderTable } from "./renderers";
 import { bindEvents } from "./ui";
 import { sheetInfo } from "./hyperformulaConfig";
 
-import "./styles.css";
-
 // Bind the button events.
 bindEvents();
 

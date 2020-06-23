@@ -1,6 +1,5 @@
-import { hf, sheetId } from "./hyperformulaConfig";
+import { hf, sheetId, sheetName } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
-import { getFormattedDate } from "./momentHelper";
 
 /**
  * Fill the HTML table with data.
@@ -18,7 +17,13 @@ export function renderTable(calculated = false) {
       const cellAddress = { sheet: sheetId, col, row };
       const cellHasFormula = hf.doesCellHaveFormula(cellAddress);
       const showFormula = calculated || !cellHasFormula;
-      let cellValue = displayValue(cellAddress, showFormula);
+      let cellValue = "";
+
+      if (!hf.isCellEmpty(cellAddress) && showFormula) {
+        cellValue = hf.getCellValue(cellAddress);
+      } else {
+        cellValue = hf.getCellFormula(cellAddress);
+      }
 
       newTbodyHTML += `<td class="${
         cellHasFormula ? updatedCellClass : ""
@@ -26,33 +31,11 @@ export function renderTable(calculated = false) {
       ${cellValue}
       </span></td>`;
     }
+
+    newTbodyHTML += "</tr>";
   }
 
   tbodyDOM.innerHTML = newTbodyHTML;
-}
-
-/**
- * Force the table to display either the formula, the value or a raw source data value.
- *
- * @param {SimpleCellAddress} cellAddress Cell address.
- * @param {boolean} showFormula `true` if the formula should be visible.
- */
-function displayValue(cellAddress, showFormula) {
-  // Declare which columns should display the raw source data, instead of the data from HyperFormula.
-  let sourceColumns = [0, 1];
-  let cellValue = "";
-
-  if (sourceColumns.includes(cellAddress.col)) {
-    cellValue = getFormattedDate(hf.numberToDate(hf.getCellValue(cellAddress)));
-  } else {
-    if (!hf.isCellEmpty(cellAddress) && showFormula) {
-      cellValue = hf.getCellValue(cellAddress);
-    } else {
-      cellValue = hf.getCellFormula(cellAddress);
-    }
-  }
-
-  return cellValue;
 }
 
 /**

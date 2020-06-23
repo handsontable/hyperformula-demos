@@ -11,3 +11,9 @@ export const customParseDate = (dateString, dateFormat) => {
     };
   }
 };
+
+export const getFormattedDate = dateObject => {
+  dateObject.month -= 1;
+
+  return moment(dateObject).format("Do MMM YY");
+};

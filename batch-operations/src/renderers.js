@@ -1,6 +1,5 @@
-import { hf, sheetId } from "./hyperformulaConfig";
+import { hf, sheetId, sheetName } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
-import { getFormattedDate } from "./momentHelper";
 
 /**
  * Fill the HTML table with data.
@@ -10,15 +9,27 @@ import { getFormattedDate } from "./momentHelper";
 export function renderTable(calculated = false) {
   const tbodyDOM = document.querySelector(".example tbody");
   const updatedCellClass = ANIMATION_ENABLED ? "updated-cell" : "";
+  const totals = ["=SUM(Year_1)", "=SUM(Year_2)"];
   const { height, width } = hf.getSheetDimensions(sheetId);
   let newTbodyHTML = "";
+  let totalRowsHTML = "";
 
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
       const cellAddress = { sheet: sheetId, col, row };
       const cellHasFormula = hf.doesCellHaveFormula(cellAddress);
       const showFormula = calculated || !cellHasFormula;
-      let cellValue = displayValue(cellAddress, showFormula);
+      let cellValue = "";
+
+      if (!hf.isCellEmpty(cellAddress) && showFormula) {
+        cellValue = hf.getCellValue(cellAddress);
+
+        if (!isNaN(cellValue)) {
+          cellValue = cellValue.toFixed(2);
+        }
+      } else {
+        cellValue = hf.getCellFormula(cellAddress);
+      }
 
       newTbodyHTML += `<td class="${
         cellHasFormula ? updatedCellClass : ""
@@ -26,33 +37,32 @@ export function renderTable(calculated = false) {
       ${cellValue}
       </span></td>`;
     }
+
+    newTbodyHTML += "</tr>";
   }
+
+  totalRowsHTML = `<tr>
+  <td>TOTAL</td>
+  <td class="${updatedCellClass}">
+    <span>${
+      calculated
+        ? hf.calculateFormula(totals[0], sheetName).toFixed(2)
+        : totals[0]
+    }</span>
+  </td>
+  <td class="${updatedCellClass}">
+    <span>${
+      calculated
+        ? hf.calculateFormula(totals[1], sheetName).toFixed(2)
+        : totals[1]
+    }</span>
+  </td>
+  <td colspan="2"></td>
+  </tr>`;
+
+  newTbodyHTML += totalRowsHTML;
 
   tbodyDOM.innerHTML = newTbodyHTML;
-}
-
-/**
- * Force the table to display either the formula, the value or a raw source data value.
- *
- * @param {SimpleCellAddress} cellAddress Cell address.
- * @param {boolean} showFormula `true` if the formula should be visible.
- */
-function displayValue(cellAddress, showFormula) {
-  // Declare which columns should display the raw source data, instead of the data from HyperFormula.
-  let sourceColumns = [0, 1];
-  let cellValue = "";
-
-  if (sourceColumns.includes(cellAddress.col)) {
-    cellValue = getFormattedDate(hf.numberToDate(hf.getCellValue(cellAddress)));
-  } else {
-    if (!hf.isCellEmpty(cellAddress) && showFormula) {
-      cellValue = hf.getCellValue(cellAddress);
-    } else {
-      cellValue = hf.getCellFormula(cellAddress);
-    }
-  }
-
-  return cellValue;
 }
 
 /**

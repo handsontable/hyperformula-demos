@@ -2,7 +2,6 @@ import { tableData } from "./data";
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
-  precisionRounding: 2,
   licenseKey: "agpl-v3"
 });
 
@@ -19,5 +18,8 @@ hf.setCellContents(
   },
   tableData
 );
+
+// Clear the undo stack to prevent undoing the initialization steps.
+hf.clearUndoStack();
 
 export { hf, sheetName, sheetId };

@@ -1,6 +1,5 @@
 export const initializeHF = (initSheetId: string) => {
   const hf = window.HyperFormula.buildEmpty({
-    precisionRounding: 2,
     licenseKey: "agpl-v3"
   });
 
