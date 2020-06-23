@@ -1,3 +1,8 @@
+/**
+ * Input configuration and definition.
+ *
+ * @type {object}
+ */
 export const inputConfig = {
   "add-sheet": {
     inputs: [

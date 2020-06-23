@@ -1,4 +1,4 @@
-import { hf, sheetId, sheetName } from "./hyperformulaConfig";
+import { hf, sheetId } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
 
 /**

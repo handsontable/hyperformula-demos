@@ -1,5 +1,12 @@
 import moment from "moment";
 
+/**
+ * Function defining the way HF should handle the provided date string.
+ *
+ * @param {string} dateString The date string.
+ * @param {string} dateFormat The date format.
+ * @returns {{month: *, year: *, day: *}} Object with date-related information.
+ */
 export const customParseDate = (dateString, dateFormat) => {
   const momentDate = moment(dateString, dateFormat, true);
 
@@ -12,6 +19,12 @@ export const customParseDate = (dateString, dateFormat) => {
   }
 };
 
+/**
+ * Date formatting function.
+ *
+ * @param {{month: *, year: *, day: *}} dateObject Object with date-related information.
+ * @returns {string} Formatted date string.
+ */
 export const getFormattedDate = dateObject => {
   dateObject.month -= 1;
 

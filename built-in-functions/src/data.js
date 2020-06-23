@@ -1,6 +1,7 @@
 /**
  * Initial table data.
  */
+
 export const formulas = [
   ["=TRUE()"],
   ["=SUM(Data!A1, Data!A2)"],

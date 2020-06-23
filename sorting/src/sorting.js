@@ -1,5 +1,10 @@
 import { hf } from "./hyperformulaConfig";
 
+/**
+ * Sort ascending function.
+ *
+ * @param {Function} clb The callback function.
+ */
 export const sortAsc = clb => {
   try {
     for (let x = 0; x < 7 * 7; x++) {
@@ -21,6 +26,11 @@ export const sortAsc = clb => {
   clb();
 };
 
+/**
+ * Sort descending function.
+ *
+ * @param {Function} clb The callback function.
+ */
 export const sortDesc = clb => {
   try {
     for (let x = 0; x < 7 * 7; x++) {

@@ -12,6 +12,9 @@ const sheetId = hf.getSheetId(sheetName);
 // Fill the HyperFormula sheet with data.
 reinitializeData();
 
+/**
+ * Reinitialize the HF data.
+ */
 function reinitializeData() {
   hf.setCellContents(
     {

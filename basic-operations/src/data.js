@@ -19,6 +19,11 @@ export function getSampleData(rows, columns) {
   return data;
 }
 
+/**
+ * A simple state object for the demo.
+ *
+ * @type {object}
+ */
 export const state = {
   currentSheet: null
 };
