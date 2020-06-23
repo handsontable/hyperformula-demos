@@ -2,6 +2,9 @@ import { tableData } from "./data";
 import { CountHF } from "./countHFFunctionPlugin";
 import { countHFTranslations } from "./countHFTranslations";
 
+// Register the custom function plugin
+HyperFormula.registerFunctionPlugin(CountHF, countHFTranslations);
+
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   licenseKey: "agpl-v3"
@@ -20,7 +23,5 @@ hf.setCellContents(
   },
   tableData
 );
-
-HyperFormula.registerFunctionPlugin(CountHF, countHFTranslations);
 
 export { hf, sheetName, sheetId };
