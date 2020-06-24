@@ -84,7 +84,8 @@ export const inputConfig = {
       },
       {
         type: "text",
-        disabled: "disabled"
+        disabled: "disabled",
+        placeholder: ""
       }
     ],
     disclaimer: "Cell addresses format examples: A1, B4, C6.",
