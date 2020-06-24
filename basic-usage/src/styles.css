@@ -55,8 +55,6 @@ table thead tr th span::before {
   content: counter(col-counter, upper-alpha);
   display: inline-block;
   width: 20px;
-  position: relative;
-  left: -10px;
 }
 
 #address-preview {

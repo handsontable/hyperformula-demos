@@ -62,8 +62,6 @@ table thead tr th::before {
     content: counter(col-counter, upper-alpha);
     display: inline-block;
     width: 20px;
-    position: relative;
-    left: -10px;
 }
 
 @keyframes cell-appear {
