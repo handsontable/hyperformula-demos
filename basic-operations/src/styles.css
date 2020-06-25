@@ -1,0 +1,156 @@
+body {
+    font-family: sans-serif;
+    counter-reset: row-counter col-counter;
+    padding: 15px;
+    font-size: 1.4rem;
+}
+
+.example button.run {
+    background-color: #1c49e4;
+    border-color: #1c49e4;
+}
+
+.example button.run:hover {
+    background-color: #2350ea;
+}
+
+.example button.button.reset {
+    border-color: #1c49e4;
+    color: #1c49e4;
+    margin-bottom: 20px;
+}
+
+table {
+    table-layout: fixed;
+}
+
+table tbody tr td,
+table tbody tr th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table thead tr th:first-child {
+    padding-left: 40px;
+}
+
+table tbody tr td:first-child span {
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    padding-left: 15px;
+    margin-left: 0;
+}
+
+table tbody tr td:first-child span::before {
+    counter-increment: row-counter;
+    content: counter(row-counter);
+    display: inline-block;
+    width: 20px;
+    position: relative;
+    left: -10px;
+    font-weight: bold;
+}
+
+table tbody tr td.updated-cell span {
+    animation-name: cell-appear;
+    animation-duration: 0.6s;
+}
+
+table thead tr th::before {
+    counter-increment: col-counter;
+    content: counter(col-counter, upper-alpha);
+    display: inline-block;
+    width: 20px;
+}
+
+@keyframes cell-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Form */
+.crud-entry {
+    margin-bottom: 10px;
+}
+
+#inputs input:focus,
+#inputs select:focus,
+#toolbar select:focus {
+    border-color: #1c49e4;
+}
+
+input.inline,
+select.inline {
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    border-top-right-radius: 0;
+    margin: 0;
+    width: 10em;
+    float: left;
+}
+
+input.inline.middle {
+    border-radius: 0;
+    margin: 0;
+    width: 10em;
+    float: left;
+}
+
+input::placeholder {
+    opacity: 0.55;
+}
+
+button.inline {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin: 0;
+}
+
+#error-message {
+    display: none;
+}
+
+#disclaimer {
+    font-size: 1rem;
+    opacity: 0.6;
+    margin: 0;
+}
+
+/* Fix for milligram's select arrow not working */
+select {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="%23d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>') center right no-repeat;
+    padding-right: 3rem;
+}
+
+input:disabled {
+    background-color: #f7f7f7;
+}
+
+#sheet-select {
+    width: 12rem;
+}
+
+#action-select {
+    width: 14rem;
+}
+
+#preview-header {
+    margin: 30px 0 0 0;
+}
+
+#inputs {
+    display: none;
+}
+
+#inputs.error input {
+    border: 1px solid red;
+}
+
+#error-message {
+    color: red;
+}

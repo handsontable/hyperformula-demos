@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HyperFormula Advanced Usage Demo</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script src="https://gistcdn.githack.com/jansiegel/41d3a0b3b955e017ce7e72e23b4fdc91/raw/2c90b351782ac0c1b576ee5cbab73eef20aea2e1/hf-474ae6a.full.js"></script>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="example">
+      <button id="run" class="button run">
+        Who won?
+      </button>
+      <div id="result">
+        <span>&#127942;</span>
+        <span class="output"></span>
+      </div>
+      <hr />
+      <div id="data-preview" class="container">
+        <div class="row">
+          <div class="column">
+            <h5>HyperFormula data preview:</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div id="TeamA-container" class="column">
+            <h4>Team A</h4>
+            <table>
+              <colgroup>
+                <col style="width:50%" />
+                <col style="width:50%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div id="TeamB-container" class="column">
+            <h4>Team B</h4>
+            <table>
+              <colgroup>
+                <col style="width:50%" />
+                <col style="width:50%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="column">
+            <div id="Formulas-container" class="column">
+              <h4>Formulas</h4>
+              <table>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>

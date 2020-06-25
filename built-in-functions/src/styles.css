@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+  counter-reset: row-counter;
+  padding: 15px;
+}
+
+table {
+  table-layout: fixed;
+}
+
+table tbody tr td,
+table tbody tr th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#data-preview {
+  font-size: 1.5rem;
+}
