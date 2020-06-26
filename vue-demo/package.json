@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "4.1.1",
-    "hyperformula": "0.1.0",
+    "hyperformula": "0.1.x",
     "milligram": "1.4.0",
     "vue": "^2.6.11"
   },
