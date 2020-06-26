@@ -2,65 +2,67 @@
   <div>
     <table>
       <colgroup>
-        <col style="width:22%" />
-        <col style="width:15%" />
-        <col style="width:23%" />
-        <col style="width:20%" />
-        <col style="width:20%" />
+        <col style="width:22%">
+        <col style="width:15%">
+        <col style="width:23%">
+        <col style="width:20%">
+        <col style="width:20%">
       </colgroup>
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Year_1</th>
-          <th>Year_2</th>
-          <th>Average</th>
-          <th>Sum</th>
-        </tr>
+      <tr>
+        <th>Name</th>
+        <th>Year_1</th>
+        <th>Year_2</th>
+        <th>Average</th>
+        <th>Sum</th>
+      </tr>
       </thead>
       <tbody>
-        <tr v-for="(rows, rowIndex)  in data" :key="rowIndex">
-          <td v-for="(cell, cellIndex) in rows" :key="`${rowIndex},${cellIndex}`">{{ formatNumber(cell) }}</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-          <td v-for="(total, cellIndex) in totals" :key="cellIndex">{{ formatNumber(total) }}</td>
-          <td/>
-          <td/>
-        </tr>
+      <tr v-for="(rows, rowIndex)  in data" :key="rowIndex">
+        <td v-for="(cell, cellIndex) in rows" :key="`${rowIndex},${cellIndex}`">
+          <span>{{ formatNumber(cell) }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td v-for="(total, cellIndex) in totals" :key="cellIndex">{{ formatNumber(total) }}</td>
+        <td/>
+        <td/>
+      </tr>
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-import Button from "./Button";
+  import Button from "./Button";
 
-export default {
-  name: "Table",
-  components: {
-    Button
-  },
-  props: {
-    data: {
-      type: Array
+  export default {
+    name: "Table",
+    components: {
+      Button
     },
-    totals: {
-      type: Array
-    }
-  },
-  methods: {
-    formatNumber(number) {
-      let numericValue = Number(number);
-      let value = number;
-
-      if (!isNaN(numericValue)) {
-        value = numericValue.toFixed(2);
+    props: {
+      data: {
+        type: Array
+      },
+      totals: {
+        type: Array
       }
+    },
+    methods: {
+      formatNumber(number) {
+        let numericValue = Number(number);
+        let value = number;
 
-      return value;
+        if (!isNaN(numericValue)) {
+          value = numericValue.toFixed(2);
+        }
+
+        return value;
+      }
     }
-  }
-};
+  };
 </script>
 
 
@@ -87,6 +89,7 @@ export default {
           td {
             &:first-child {
               text-align: right;
+              text-transform: uppercase;
             }
           }
         }
