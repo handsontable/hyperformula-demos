@@ -1,3 +1,4 @@
+import HyperFormula, { frFR } from 'hyperformula';
 import { tableData } from "./data";
 
 // register language

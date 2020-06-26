@@ -1,3 +1,4 @@
+import HyperFormula from 'hyperformula';
 import { tableData } from "./data";
 import { customParseDate } from "./momentHelper";
 

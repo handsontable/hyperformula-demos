@@ -1,5 +1,7 @@
+import HyperFormula from 'hyperformula';
+
 export const initializeHF = (initSheetId: string) => {
-  const hf = window.HyperFormula.buildEmpty({
+  const hf = HyperFormula.buildEmpty({
     licenseKey: "agpl-v3"
   });
 
@@ -15,7 +17,7 @@ export const initializeHF = (initSheetId: string) => {
 };
 
 export const initializeNamedExpressions = (
-  hf: typeof window.HyperFormula,
+  hf: typeof HyperFormula,
   sheetName: string
 ) => {
   const sheetId = hf.getSheetId(sheetName);
@@ -33,7 +35,7 @@ export const initializeNamedExpressions = (
 };
 
 export const initHFValues = (
-  hf: typeof window.HyperFormula,
+  hf: typeof HyperFormula,
   sheetId: string,
   data: unknown
 ) => {

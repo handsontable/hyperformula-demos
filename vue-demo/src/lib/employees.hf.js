@@ -1,5 +1,7 @@
+import HyperFormula from 'hyperformula';
+
 export const initializeHF = initSheetId => {
-  const hf = window.HyperFormula.buildEmpty({
+  const hf = HyperFormula.buildEmpty({
     licenseKey: "agpl-v3"
   });
 

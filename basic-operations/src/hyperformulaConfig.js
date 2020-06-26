@@ -1,3 +1,4 @@
+import HyperFormula from 'hyperformula';
 import { getSampleData, state } from "./data";
 
 // Create an empty HyperFormula instance.

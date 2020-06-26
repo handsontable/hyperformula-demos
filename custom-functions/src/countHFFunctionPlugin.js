@@ -1,5 +1,4 @@
-// TODO: replace it with an appropriate import
-const FunctionPlugin = HyperFormula.FunctionPlugin;
+import { FunctionPlugin } from 'hyperformula';
 
 /**
  * Custom function plugin.

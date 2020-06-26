@@ -1,3 +1,4 @@
+import HyperFormula from 'hyperformula';
 import { playersAData, playersBData, formulasData } from "./data";
 
 // Create an empty HyperFormula instance.
