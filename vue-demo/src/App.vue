@@ -27,4 +27,9 @@ export default {
 </script>
 
 <style>
+  body {
+    font-family: sans-serif;
+    counter-reset: row-counter;
+    padding: 15px;
+  }
 </style>
