@@ -9,7 +9,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "milligram": "latest"
+    "hyperformula": "0.1.x"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",

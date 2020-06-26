@@ -1,10 +1,11 @@
+import HyperFormula from "hyperformula";
 import { tableData } from "./data";
 import { customParseDate } from "./momentHelper";
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   parseDateTime: customParseDate,
-  dateFormats: ["Do MMM YY"],
+  dateFormats: ["MMM D YY"],
   licenseKey: "agpl-v3"
 });
 

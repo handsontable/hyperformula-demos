@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HyperFormula from 'hyperformula';
 import { EmployeesContext } from "./employee.context";
 import {
   initializeHF,
@@ -19,7 +20,7 @@ export const EmployeesStateProvider = ({
   children
 }: EmployeesProviderProps) => {
   const hfReference = React.useRef<{
-    hf: typeof window.HyperFormula;
+    hf: typeof HyperFormula;
     sheetId: string;
     sheetName: string;
   }>();

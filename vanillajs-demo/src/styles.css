@@ -24,6 +24,10 @@ table tbody tr:last-child {
   font-weight: 600;
 }
 
+table tbody tr:last-child td:first-child {
+  text-align: right;
+}
+
 table tbody tr td:first-child {
   text-align: center;
   padding: 0;
@@ -31,12 +35,7 @@ table tbody tr td:first-child {
 
 table {
   table-layout: fixed;
-}
-
-table tbody tr td,
-table tbody tr th {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 table thead tr th:first-child {
