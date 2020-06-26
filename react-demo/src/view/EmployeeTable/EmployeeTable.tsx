@@ -14,6 +14,13 @@ export const EmployeeTable: React.FC<EmployeeTableProps> = () => {
 
   return (
     <Table colgroupWidths={[25, 15, 20, 20, 20]}>
+      <colgroup>
+        <col style="width:22%"/>
+        <col style="width:15%"/>
+        <col style="width:23%"/>
+        <col style="width:20%"/>
+        <col style="width:20%"/>
+      </colgroup>
       <thead>
         <Table.Row>
           <Table.Head>Name</Table.Head>

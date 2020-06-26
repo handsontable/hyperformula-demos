@@ -12,5 +12,9 @@ export const CellView: React.FC<CellProps> = ({ children }) => {
     value = numericValue.toFixed(2);
   }
 
-  return <td>{value}</td>;
+  return <td>
+    <span>
+      {value}
+    </span>
+  </td>;
 };
