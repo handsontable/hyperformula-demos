@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
+  counter-reset: row-counter;
   padding: 15px;
+}
+
+body * {
+  font-family: sans-serif;
 }

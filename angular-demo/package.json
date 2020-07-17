@@ -18,7 +18,7 @@
     "@angular/router": "~10.0.3",
     "core-js": "3.6.5",
     "hyperformula": "0.1.x",
-    "milligram": "^1.4.1",
+    "milligram": "1.4.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
