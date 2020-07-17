@@ -1,0 +1,35 @@
+$angular: #dd0330;
+
+/** override */
+.button {
+  margin: 0 10px 20px 0;
+  background: $angular;
+  border-color: $angular;
+
+  &:active,
+  &:focus {
+    background: $angular;
+    border-color: $angular;
+  }
+
+  &:hover {
+    background: darken($angular, 5%);
+    border-color: darken($angular, 5%);  
+  }
+
+  &.button-outline {
+    color: $angular;
+    background: transparent;
+    
+    &:active,
+    &:focus {
+      color: $angular;
+      border-color: $angular;
+    }
+
+    &:hover {
+      color: darken($angular, 5%);
+      border-color: darken($angular, 5%);  
+    }
+  }
+}

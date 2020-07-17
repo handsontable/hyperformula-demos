@@ -1,0 +1,32 @@
+<div>
+  <table>
+    <colgroup>
+      <col style="width:22%" />
+      <col style="width:15%" />
+      <col style="width:23%" />
+      <col style="width:20%" />
+      <col style="width:20%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year_1</th>
+        <th>Year_2</th>
+        <th>Average</th>
+        <th>Sum</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of (employees$ | async); index as r;">
+        <td *ngFor="let cell of row; index as c"><span>{{ cell }}</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td *ngFor="let total of (totals$ | async); index as t">{{ total }}</td>
+        <td colspan="2"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
