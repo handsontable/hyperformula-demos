@@ -1,9 +1,11 @@
+import HyperFormula from "hyperformula";
+import frFR from "hyperformula/es/i18n/languages/frFR";
 import { tableData } from "./data";
 
 // register language
 HyperFormula.registerLanguage(
-  HyperFormula.languages.frFR.langCode,
-  HyperFormula.languages.frFR
+  frFR.langCode,
+  frFR
 );
 
 // Create an empty HyperFormula instance.
