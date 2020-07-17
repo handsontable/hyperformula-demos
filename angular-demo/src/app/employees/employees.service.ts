@@ -45,10 +45,25 @@ export class EmployeesService {
   }
 
   public calculate() {
-    this.dataStore.employees = this.hf.getSheetValues(this.sheetId);
-    this.dataStore.totals = TOTALS.map(expression =>
-      this.hf.calculateFormula(expression, this.sheetName)
-    );
+    this.dataStore.employees = this.hf
+      .getSheetValues(this.sheetId)
+      .map(values => {
+        const newValues = [];
+
+        values.forEach(value => {
+          if (!isNaN(value)) {
+            newValues.push(value.toFixed(2));
+          } else {
+            newValues.push(value);
+          }
+        });
+
+        return newValues;
+      });
+
+    this.dataStore.totals = TOTALS.map(expression => {
+      return this.hf.calculateFormula(expression, this.sheetName).toFixed(2);
+    });
 
     this._employees.next(Object.assign({}, this.dataStore).employees);
     this._totals.next(Object.assign({}, this.dataStore).totals);
