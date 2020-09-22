@@ -6,7 +6,7 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
-    "hyperformula": "0.1.x",
+    "hyperformula": "0.2.x",
     "milligram": "1.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
