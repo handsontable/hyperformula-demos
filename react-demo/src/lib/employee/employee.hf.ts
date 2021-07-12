@@ -2,7 +2,7 @@ import HyperFormula from 'hyperformula';
 
 export const initializeHF = (initSheetId: string) => {
   const hf = HyperFormula.buildEmpty({
-    licenseKey: "agpl-v3"
+    licenseKey: "gpl-v3"
   });
 
   // Add a new sheet and get its id.

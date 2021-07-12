@@ -4,7 +4,7 @@ import { tableData } from "./data";
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   precisionRounding: 10,
-  licenseKey: "agpl-v3"
+  licenseKey: "gpl-v3"
 });
 
 // Add a new sheet and get its id.

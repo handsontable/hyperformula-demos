@@ -6,7 +6,7 @@ import { customParseDate } from "./momentHelper";
 const hf = HyperFormula.buildEmpty({
   parseDateTime: customParseDate,
   dateFormats: ["MMM D YY"],
-  licenseKey: "agpl-v3"
+  licenseKey: "gpl-v3"
 });
 
 // Add a new sheet and get its id.

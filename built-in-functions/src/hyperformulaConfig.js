@@ -3,7 +3,7 @@ import { formulas, data } from "./data";
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
-  licenseKey: "agpl-v3"
+  licenseKey: "gpl-v3"
 });
 
 const sheetInfo = {

@@ -1,6 +1,6 @@
-import { hf, sheetId, sheetName } from "./hyperformulaConfig";
+import { hf, sheetId } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
-import { sortAsc, sortDesc } from "./sorting";
+import { sort } from "./sorting";
 
 /**
  * Fill the HTML table with data.
@@ -47,13 +47,13 @@ export function resetTable() {
 }
 
 export const doSortASC = () => {
-  sortAsc(() => {
+  sort(true, () => {
     renderTable(true);
   });
 };
 
 export const doSortDESC = () => {
-  sortDesc(() => {
+  sort(false, () => {
     renderTable(true);
   });
 };

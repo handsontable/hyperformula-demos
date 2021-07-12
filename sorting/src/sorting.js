@@ -1,51 +1,39 @@
-import { hf } from "./hyperformulaConfig";
+import { hf, sheetId } from "./hyperformulaConfig";
 
 /**
- * Sort ascending function.
+ * Sort the HF's dataset.
  *
- * @param {Function} clb The callback function.
+ * @param {boolean} ascending `true` if sorting in ascending order, `false` otherwise.
+ * @param {Function} callback The callback function.
  */
-export const sortAsc = clb => {
-  try {
-    for (let x = 0; x < 7 * 7; x++) {
-      const k = x % 7;
-      const source = { sheet: 0, col: 1, row: k };
-      const destination = { sheet: 0, col: 1, row: k + 1 };
+export function sort(ascending, callback) {
+  const rowCount = hf.getSheetDimensions(sheetId).height;
+  const colValues = [];
+  let newOrder = null;
+  let newOrderMapping = [];
 
-      const res1 = hf.getCellValue(source);
-      const res2 = hf.getCellValue(destination);
-      hf.batch(() => {
-        if (res2 - res1 < 0) {
-          hf.moveRows(0, k + 1, 1, k);
-        }
-      });
-    }
-  } catch (e) {
-    console.log(e.toString());
+  for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+    colValues.push({
+      rowIndex,
+      value: hf.getCellValue({
+        sheet: sheetId,
+        col: 1,
+        row: rowIndex
+      })
+    });
   }
-  clb();
-};
 
-/**
- * Sort descending function.
- *
- * @param {Function} clb The callback function.
- */
-export const sortDesc = clb => {
-  try {
-    for (let x = 0; x < 7 * 7; x++) {
-      const k = x % 7;
-      const source = { sheet: 0, col: 1, row: k };
-      const destination = { sheet: 0, col: 1, row: k + 1 };
+  colValues.sort((a, b) => {
+    return ascending ? a.value > b.value : a.value < b.value;
+  });
 
-      const res1 = hf.getCellValue(source);
-      const res2 = hf.getCellValue(destination);
-      if (res2 - res1 > 0) {
-        hf.moveRows(0, k + 1, 1, k);
-      }
-    }
-  } catch (e) {
-    console.log(e.toString());
-  }
-  clb();
-};
+  newOrder = colValues.map((el) => el.rowIndex);
+
+  newOrder.forEach((orderIndex, arrIndex) => {
+    newOrderMapping[orderIndex] = arrIndex;
+  });
+
+  hf.setRowOrder(sheetId, newOrderMapping);
+
+  callback();
+}
