@@ -42,7 +42,7 @@ const EmployeesDataProvider = {
     tableTotals: function() {
       if (this.withCalculations) {
         return TOTAL_EXPRESSIONS.map(expression =>
-          this.hf.calculateFormula(expression, this.sheetName).toFixed(2)
+          this.hf.calculateFormula(expression, this.sheetId).toFixed(2)
         );
       }
       return TOTAL_EXPRESSIONS;

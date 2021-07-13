@@ -49,7 +49,7 @@ export const EmployeesStateProvider = ({
       return;
     }
 
-    const { hf, sheetId, sheetName } = hfReference.current;
+    const { hf, sheetId } = hfReference.current;
 
     if (withCalculations) {
       const calculatedValues = hf.getSheetValues(sheetId);
@@ -63,7 +63,7 @@ export const EmployeesStateProvider = ({
       setEmployees(formmatedValues);
       setTotals(
         TOTAL_EXPRESSIONS.map(expression =>
-          hf.calculateFormula(expression, sheetName).toFixed(2)
+          hf.calculateFormula(expression, sheetId).toFixed(2)
         )
       );
     } else {

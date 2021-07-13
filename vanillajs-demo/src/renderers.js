@@ -1,4 +1,4 @@
-import { hf, sheetId, sheetName } from "./hyperformulaConfig";
+import { hf, sheetId } from "./hyperformulaConfig";
 import { ANIMATION_ENABLED } from "./ui";
 
 /**
@@ -46,14 +46,14 @@ export function renderTable(calculated = false) {
 <td class="${updatedCellClass}">
   <span>${
     calculated
-      ? hf.calculateFormula(totals[0], sheetName).toFixed(2)
+      ? hf.calculateFormula(totals[0], sheetId).toFixed(2)
       : totals[0]
   }</span>
 </td>
 <td class="${updatedCellClass}">
   <span>${
     calculated
-      ? hf.calculateFormula(totals[1], sheetName).toFixed(2)
+      ? hf.calculateFormula(totals[1], sheetId).toFixed(2)
       : totals[1]
   }</span>
 </td>

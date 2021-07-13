@@ -62,7 +62,7 @@ export class EmployeesService {
       });
 
     this.dataStore.totals = TOTALS.map(expression => {
-      return this.hf.calculateFormula(expression, this.sheetName).toFixed(2);
+      return this.hf.calculateFormula(expression, this.sheetId).toFixed(2);
     });
 
     this._employees.next(Object.assign({}, this.dataStore).employees);
