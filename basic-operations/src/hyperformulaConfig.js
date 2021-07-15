@@ -9,8 +9,9 @@ const hf = HyperFormula.buildEmpty({
 // Add a new sheet and get its id.
 state.currentSheet = "InitialSheet";
 const sheetName = hf.addSheet(state.currentSheet);
+const sheetId = hf.getSheetId(sheetName);
 
 // Fill the HyperFormula sheet with data.
-hf.setSheetContent(sheetName, getSampleData(5, 5));
+hf.setSheetContent(sheetId, getSampleData(5, 5));
 
 export { hf };

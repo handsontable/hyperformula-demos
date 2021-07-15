@@ -17,10 +17,10 @@ const sheetInfo = {
 
 // add 'Data' sheet
 hf.addSheet(sheetInfo.data.sheetName);
-hf.setSheetContent(sheetInfo.data.sheetName, data);
+hf.setSheetContent(hf.getSheetId(sheetInfo.data.sheetName), data);
 
 // add 'Formulas' sheet
 hf.addSheet(sheetInfo.formulas.sheetName);
-hf.setSheetContent(sheetInfo.formulas.sheetName, formulas);
+hf.setSheetContent(hf.getSheetId(sheetInfo.formulas.sheetName), formulas);
 
 export { hf, sheetInfo };

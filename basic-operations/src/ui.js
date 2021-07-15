@@ -56,7 +56,7 @@ export function doAction(action) {
       state.currentSheet = hf.addSheet(inputValues[0]);
 
       handleError(() => {
-        hf.setSheetContent(state.currentSheet, getSampleData(5, 5));
+        hf.setSheetContent(hf.getSheetId(state.currentSheet), getSampleData(5, 5));
       });
 
       updateSheetDropdown();
@@ -64,7 +64,7 @@ export function doAction(action) {
       break;
     case "remove-sheet":
       handleError(() => {
-        hf.removeSheet(inputValues[0]);
+        hf.removeSheet(hf.getSheetId(inputValues[0]));
       });
 
       if (state.currentSheet === inputValues[0]) {

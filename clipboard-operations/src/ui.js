@@ -30,7 +30,7 @@ export function bindEvents() {
  * Copy the second row.
  */
 function copy() {
-  return hf.copy({ sheet: 0, col: 0, row: 1 }, 3, 1);
+  return hf.copy({start: { sheet: 0, col: 0, row: 1 }, end: { sheet: 0, col: 2, row: 1 }});
 }
 
 /**

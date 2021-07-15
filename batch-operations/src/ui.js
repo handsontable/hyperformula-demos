@@ -36,7 +36,7 @@ export function bindEvents() {
  * Reset the data for the table.
  */
 function resetTableData() {
-  hf.setSheetContent(hf.getSheetName(sheetId), tableData);
+  hf.setSheetContent(sheetId, tableData);
   renderTable(IS_CALCULATED);
 }
 

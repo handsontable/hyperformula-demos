@@ -38,7 +38,7 @@ export function renderTable(sheetName) {
 export function renderResult() {
   const resultOutputDOM = document.querySelector("#result .output");
   const cellAddress = hf.simpleCellAddressFromString(
-    `${sheetInfo.formulas.sheetName}!A1`
+    `${sheetInfo.formulas.sheetName}!A1`, hf.getSheetId(sheetInfo.formulas.sheetName)
   );
 
   resultOutputDOM.innerHTML = `<span>
