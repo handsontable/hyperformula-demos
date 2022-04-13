@@ -20,8 +20,8 @@ export const EmployeesStateProvider = ({
   children
 }: EmployeesProviderProps) => {
   const hfReference = React.useRef<{
-    hf: typeof HyperFormula;
-    sheetId: string;
+    hf: HyperFormula;
+    sheetId: number;
     sheetName: string;
   }>();
   const [withCalculations, setWithCalculations] = useState<boolean>();
@@ -35,10 +35,10 @@ export const EmployeesStateProvider = ({
   /** INITIALIZE */
   React.useEffect(() => {
     const { hf, sheetId, sheetName } = initializeHF(EMPLOYEE_SHEET_ID);
-    hfReference.current = { hf, sheetId, sheetName };
+    hfReference.current = { hf, sheetId: sheetId as number, sheetName };
 
     // Fill the HyperFormula sheet with data.
-    initHFValues(hf, sheetId, tableData);
+    initHFValues(hf, sheetId as number, tableData);
 
     // Add named expressions
     initializeNamedExpressions(hf, sheetName);
@@ -52,22 +52,22 @@ export const EmployeesStateProvider = ({
     const { hf, sheetId } = hfReference.current;
 
     if (withCalculations) {
-      const calculatedValues = hf.getSheetValues(sheetId);
+      const calculatedValues = hf.getSheetValues(sheetId) as number[][];
       // format the display of numbers
-      const formmatedValues = calculatedValues.map((row: []) => {
+      const formmatedValues = calculatedValues.map((row: number[]) => {
         return row.map((cell: number) => {
           if (!isNaN(cell)) return cell.toFixed(2);
           return cell;
         });
       });
-      setEmployees(formmatedValues);
+      setEmployees(formmatedValues as EmployeeRow[]);
       setTotals(
         TOTAL_EXPRESSIONS.map(expression =>
-          hf.calculateFormula(expression, sheetId).toFixed(2)
+          (hf.calculateFormula(expression, sheetId) as number).toFixed(2)
         )
       );
     } else {
-      setEmployees(hf.getSheetSerialized(sheetId));
+      setEmployees(hf.getSheetSerialized(sheetId) as EmployeeRow[]);
       setTotals(TOTAL_EXPRESSIONS);
     }
   }, [hfReference, withCalculations]);

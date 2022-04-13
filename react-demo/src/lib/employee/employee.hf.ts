@@ -1,4 +1,4 @@
-import HyperFormula from 'hyperformula';
+import HyperFormula, { RawCellContent } from 'hyperformula';
 
 export const initializeHF = (initSheetId: string) => {
   const hf = HyperFormula.buildEmpty({
@@ -17,10 +17,10 @@ export const initializeHF = (initSheetId: string) => {
 };
 
 export const initializeNamedExpressions = (
-  hf: typeof HyperFormula,
+  hf: HyperFormula,
   sheetName: string
 ) => {
-  const sheetId = hf.getSheetId(sheetName);
+  const sheetId = hf.getSheetId(sheetName) as number;
   const {height} = hf.getSheetDimensions(sheetId);
 
   // Add named expressions for the "TOTAL" row.
@@ -35,9 +35,9 @@ export const initializeNamedExpressions = (
 };
 
 export const initHFValues = (
-  hf: typeof HyperFormula,
-  sheetId: string,
-  data: unknown
+  hf: HyperFormula,
+  sheetId: number,
+  data: RawCellContent | RawCellContent[][]
 ) => {
   hf.setCellContents(
     {
