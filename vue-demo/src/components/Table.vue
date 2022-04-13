@@ -35,13 +35,9 @@
 </template>
 
 <script>
-  import Button from "./Button";
-
   export default {
     name: "Table",
-    components: {
-      Button
-    },
+    components: {},
     props: {
       data: {
         type: Array
