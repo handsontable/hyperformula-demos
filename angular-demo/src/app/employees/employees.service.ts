@@ -50,7 +50,7 @@ export class EmployeesService {
       .map(values => {
         const newValues = [];
 
-        values.forEach(value => {
+        values.forEach((value: number) => {
           if (!isNaN(value)) {
             newValues.push(value.toFixed(2));
           } else {
@@ -62,7 +62,7 @@ export class EmployeesService {
       });
 
     this.dataStore.totals = TOTALS.map(expression => {
-      return this.hf.calculateFormula(expression, this.sheetId).toFixed(2);
+      return (this.hf.calculateFormula(expression, this.sheetId) as number).toFixed(2);
     });
 
     this._employees.next(Object.assign({}, this.dataStore).employees);
