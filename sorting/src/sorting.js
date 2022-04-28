@@ -23,8 +23,9 @@ export function sort(ascending, callback) {
     });
   }
 
-  colValues.sort((a, b) => {
-    return ascending ? a.value > b.value : a.value < b.value;
+  colValues.sort((objA, objB) => {
+    const delta = objA.value - objB.value;
+    return ascending ? delta : -delta;
   });
 
   newOrder = colValues.map((el) => el.rowIndex);
