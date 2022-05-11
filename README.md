@@ -34,12 +34,14 @@ https://codesandbox.io/embed/github/handsontable/hyperformula-demos/tree/2.0.x/b
 ### Locally
 
 The demos use different frameworks and technologies but all of them can be run using `npm run start` command:
-```
-// from hyperformula-demos directory
+
+```bash
+# from hyperformula-demos directory
 cd basic-usage
 npm install
 npm run start
-// copy the URL from the console output and paste it into the browser window to see the demo
+# for most demos the browser opens automatically with the right URL
+# if it didn't, copy the URL from the console output and paste it into the browser 
 ```
 
 // TODO: make it work

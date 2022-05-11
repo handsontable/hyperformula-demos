@@ -1,6 +1,8 @@
 import HyperFormula from 'hyperformula';
 import { tableData } from "./data";
 
+console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
+
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   precisionRounding: 10,
