@@ -2,6 +2,8 @@ import HyperFormula from "hyperformula";
 import { tableData } from "./data";
 import { customParseDate } from "./momentHelper";
 
+console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
+
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   parseDateTime: customParseDate,
