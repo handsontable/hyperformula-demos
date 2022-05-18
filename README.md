@@ -10,8 +10,6 @@ We keep:
 
 The demos on each version branch works with the corresponding version of HyperFormula.
 
-// TODO: remove master, make develop default
-
 ## Running the demos
 
 Each directory contains one demo. 
@@ -21,6 +19,8 @@ Each directory contains one demo.
 ### In CodeSandbox.io
 
 The demos are embeded in HyperFormula documentation using CodeSandbox.io so this should be treated as the primary execution environment for the demos.
+
+CodeSanbox.io uses `node@16.12.0` to run the demos as [configured](https://codesandbox.io/docs/configuration#sandbox-configuration) in `sandbox.config.json` file.
 
 The CodeSandbox.io links in the documentation have this form:
 ```js
@@ -44,8 +44,6 @@ npm run start
 # if it didn't, copy the URL from the console output and paste it into the browser 
 ```
 
-// TODO: make it work
-
 ## Development & maintenance
 
 On the **develop** branch we:
@@ -53,8 +51,6 @@ On the **develop** branch we:
 - improve the existing demos
 - adjust the demos to the recent changes in HyperFormula's API
 
-For each *major* and *minor* release of HyperFormula a new branch is created from **develop** with a name indicating the released version.
+For each *major* and *minor* release of HyperFormula a new branch is created from **develop** with name indicating the released version.
 
 The bugfixes for the previous versions are applied to the appropriate branches.
-
-// TODO: script for each release
