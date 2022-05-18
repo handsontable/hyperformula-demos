@@ -36,6 +36,7 @@ https://codesandbox.io/embed/github/handsontable/hyperformula-demos/tree/2.0.x/b
 The demos use different frameworks and technologies but all of them can be run using `npm run start` command:
 
 ```bash
+# we recommend to use Node v16
 # from hyperformula-demos directory
 cd basic-usage
 npm install
@@ -43,6 +44,8 @@ npm run start
 # for most demos the browser opens automatically with the right URL
 # if it didn't, copy the URL from the console output and paste it into the browser 
 ```
+
+Every demo prints the HyperFormula version to the console.
 
 ## Development & maintenance
 

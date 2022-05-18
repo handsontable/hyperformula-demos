@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/react": "16.9.19",
     "@types/react-dom": "16.9.5",
-    "node-sass": "^4.0.0",
+    "sass": "^1.51.0",
     "typescript": "3.7.5"
   },
   "scripts": {
