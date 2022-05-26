@@ -1,6 +1,6 @@
 # hyperformula-demos
 
-This repository contains demos and usage examples for the [HyperFormula](https://github.com/handsontable/hyperformula) library. Some of them are embeded in the [HyperFormula documentation](https://handsontable.github.io/hyperformula/).
+This repository contains demos and usage examples for the [HyperFormula](https://github.com/handsontable/hyperformula) library. Some of them are embedded in the [HyperFormula documentation](https://handsontable.github.io/hyperformula/).
 
 ## Branches
 
@@ -8,7 +8,7 @@ We keep:
 - **develop** branch
 - version branches e.g. **1.0.x**, **1.1.x**, **2.0.x**
 
-The demos on each version branch works with the corresponding version of HyperFormula.
+The demos on each version branch work with the corresponding version of HyperFormula.
 
 ## Running the demos
 
@@ -18,9 +18,9 @@ Each directory contains one demo.
 
 ### In CodeSandbox.io
 
-The demos are embeded in HyperFormula documentation using CodeSandbox.io so this should be treated as the primary execution environment for the demos.
+The demos are embedded in HyperFormula documentation using CodeSandbox.io so this should be treated as the primary execution environment for the demos.
 
-CodeSanbox.io uses `node@16.12.0` to run the demos as [configured](https://codesandbox.io/docs/configuration#sandbox-configuration) in `sandbox.config.json` file.
+CodeSandbox.io uses `node@16.12.0` to run the demos as [configured](https://codesandbox.io/docs/configuration#sandbox-configuration) in `sandbox.config.json` file.
 
 The CodeSandbox.io links in the documentation have this form:
 ```js
@@ -42,9 +42,9 @@ The demos use different frameworks and technologies but all of them can be run u
 cd basic-usage # or any other demo
 npm install
 npm run start
-# for most demos the browser opens automatically with the right URL
-# if it didn't, copy the URL from the console output and paste it into the browser 
 ```
+
+For most demos the browser opens automatically with the correct URL. If it didn't, copy the URL from the console output and paste it into the browser.
 
 Every demo prints the HyperFormula version to the console.
 
@@ -61,7 +61,7 @@ For each *major* and *minor* release of HyperFormula a new branch is created fro
 
 The bugfixes for the previous versions are applied to the appropriate branches.
 
-### Set HyperFormula version for all demos
+### Updating HyperFormula version for all demos
 
 This command updates the `package.json` file in all demos to use version *1.2.3* of hyperformula package:
 
@@ -70,9 +70,9 @@ This command updates the `package.json` file in all demos to use version *1.2.3*
 sh set-hyperformula-version.sh 1.2.3
 ```
 
-### Test demos with unpublish version of HyperFormula
+### Testing the demos with an unpublished version of HyperFormula
 
-To achive this a private package registry (such as [verdaccio](https://verdaccio.org/)) is necessary.
+To achieve this a private package registry (such as [verdaccio](https://verdaccio.org/)) is necessary.
 
 *We recommend using Node v16 to test the demos.*
 
