@@ -63,11 +63,11 @@ The bugfixes for the previous versions are applied to the appropriate branches.
 
 ### Updating HyperFormula version for all demos
 
-This command updates the `package.json` file in all demos to use version *1.2.3* of hyperformula package:
+This command updates the `package.json` file in all demos to use version *x.y.z* of hyperformula package:
 
 ```bash
 # in hyperformula-demos directory
-sh set-hyperformula-version.sh 1.2.3
+sh set-hyperformula-version.sh x.y.z
 ```
 
 ### Testing the demos with an unpublished version of HyperFormula
