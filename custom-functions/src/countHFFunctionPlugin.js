@@ -3,15 +3,22 @@ import { FunctionPlugin } from 'hyperformula';
 /**
  * Custom function plugin.
  */
-export class CountHF extends FunctionPlugin {
-  hyper(ast, formulaAddress) {
-    return "Hyperformula".length;
+ export class CountHF extends FunctionPlugin {
+  hyper(ast, state) {
+    return this.runFunction(ast.args, state, this.metadata('HYPER'), () => 'Hyperformula'.length);
   }
 }
 
-// Static property with the implemented function definitions.
+// Static property with the custom functions definitions
 CountHF.implementedFunctions = {
   HYPER: {
-    method: "hyper"
-  }
+    method: 'hyper'
+  },
+};
+
+// Static property with the custom functions translations
+CountHF.translations = {
+  enGB: {
+    HYPER: 'HYPER',
+  },
 };
