@@ -1,8 +1,6 @@
 import HyperFormula from 'hyperformula';
 import { getSampleData, state } from "./data";
 
-console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
-
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
   licenseKey: "gpl-v3"

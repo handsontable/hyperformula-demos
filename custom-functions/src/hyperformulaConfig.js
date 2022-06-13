@@ -3,8 +3,6 @@ import { tableData } from "./data";
 import { CountHF } from "./countHFFunctionPlugin";
 import { countHFTranslations } from "./countHFTranslations";
 
-console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
-
 // Register the custom function plugin
 HyperFormula.registerFunctionPlugin(CountHF, countHFTranslations);
 
