@@ -1,5 +1,7 @@
 import HyperFormula from 'hyperformula';
 
+console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
+
 export const initializeHF = initSheetId => {
   const hf = HyperFormula.buildEmpty({
     licenseKey: "gpl-v3"
