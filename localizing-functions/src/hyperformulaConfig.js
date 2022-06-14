@@ -2,6 +2,8 @@ import HyperFormula from "hyperformula";
 import frFR from "hyperformula/es/i18n/languages/frFR";
 import { tableData } from "./data";
 
+console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
+
 // register language
 HyperFormula.registerLanguage(
   frFR.langCode,
