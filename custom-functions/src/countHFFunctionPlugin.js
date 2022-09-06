@@ -12,7 +12,7 @@ import { FunctionPlugin } from 'hyperformula';
 // Static property with the custom functions definitions
 CountHF.implementedFunctions = {
   HYPER: {
-    method: 'hyper'
+    method: 'hyper',
   },
 };
 
