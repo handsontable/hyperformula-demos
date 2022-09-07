@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open",
+    "start": "parcel --no-source-maps index.html --open",
     "build": "parcel build index.html"
   },
   "dependencies": {
