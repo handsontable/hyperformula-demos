@@ -1,23 +1,22 @@
 const ExcelJS = require('exceljs');
 const { HyperFormula } = require('hyperformula');
 
-(async () => {
-  const filename = 'simple.xlsx';
-  const data = await readXlsxData(filename);
-  const hfInstance = HyperFormula.buildFromSheets(data, { licenseKey: 'gpl-v3' });
+async function run(filename) {
+  const xlsxWorkbook = await readXlsxWorkbookFromFile(filename);
+  const sheetsAsJavascriptArrays = convertXlsxWorkbookToJavascriptArrays(xlsxWorkbook)
+  const hf = HyperFormula.buildFromSheets(sheetsAsJavascriptArrays, { licenseKey: 'gpl-v3' });
 
-  console.log('Formulas:', hfInstance.getSheetSerialized(0));
-  console.log('Values:  ', hfInstance.getSheetValues(0));
-})();
+  console.log('Formulas:', hf.getSheetSerialized(0));
+  console.log('Values:  ', hf.getSheetValues(0));
+}
 
-
-async function readXlsxData(filename) {
+async function readXlsxWorkbookFromFile(filename) {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(filename);
-  return getWorkbookData(workbook);
+  return workbook;
 } 
 
-function getWorkbookData(workbook) {
+function convertXlsxWorkbookToJavascriptArrays(workbook) {
   const workbookData = {};
 
   workbook.eachSheet((worksheet) => {
@@ -39,3 +38,5 @@ function getWorkbookData(workbook) {
 
   return workbookData;
 }
+
+run('sample_file.xlsx');
