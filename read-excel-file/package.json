@@ -1,0 +1,14 @@
+{
+  "name": "read-excel-file",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Read Excel file and import it to HyperFormula",
+  "main": "read-excel-file.js",
+  "scripts": {
+    "start": "node read-excel-file.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.3.0",
+    "hyperformula": "2.0.x"
+  }
+}
