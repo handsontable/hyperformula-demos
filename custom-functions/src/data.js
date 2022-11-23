@@ -1,4 +1,4 @@
 /**
  * Initial table data.
  */
-export const tableData = [["=HYPER()"]];
+ export const tableData = [['=GREET("Joe")']];
