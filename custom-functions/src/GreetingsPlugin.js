@@ -1,4 +1,4 @@
-import { FunctionPlugin } from 'hyperformula';
+import { FunctionPlugin, CellError } from 'hyperformula';
 
 /**
  * Custom function plugin.
@@ -9,7 +9,13 @@ export class GreetingsPlugin extends FunctionPlugin {
       ast.args,
       state,
       this.metadata("GREET"),
-      (username) => `Hello, ${username}!`,
+      (username) => {
+        if (!username) {
+          return new CellError('VALUE');
+        }
+
+        return `👋 Hello, ${username}!`;
+      },
     );
   }
 }
