@@ -1,38 +1,41 @@
-import HyperFormula from 'hyperformula';
+import { HyperFormula } from 'hyperformula';
 import { GreetingsPlugin } from './GreetingsPlugin';
 
-describe('Custom function implemented with runFunction)', () => {
+describe('GreetingsPlugin', () => {
   it('works for a non-empty string', () => {
     HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
 
-    const engine = HyperFormula.buildFromArray([['Anthony', '=GREET(A1)']])
+    const engine = HyperFormula.buildFromArray([['Anthony', '=GREET(A1)']], { licenseKey: 'gpl-v3' })
 
-    expect(engine.getCellValue(adr('B1'))).toEqual('👋 Hello, Anthony!')
+    expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 })).toEqual('👋 Hello, Anthony!')
   })
 
-  // it('returns #VALUE! error for empty string', () => {
-  //   HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
+  it('returns #VALUE! error for empty string', () => {
+    HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
 
-  //   const engine = HyperFormula.buildFromArray([['', '=GREET(A1)']])
+    const engine = HyperFormula.buildFromArray([['', '=GREET(A1)']], { licenseKey: 'gpl-v3' })
 
-  //   expect(engine.getCellValue(adr('B1'))).toEqualError(detailedError(ErrorType.VALUE))
-  // })
+    expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR')
+    expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#VALUE!')
+  })
 
-  // it('propagates #DIV_BY_ZERO! error', () => {
-  //   HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
+  it('propagates #DIV/0! error', () => {
+    HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
 
-  //   const engine = HyperFormula.buildFromArray([['=1/0', '=GREET(A1)']])
+    const engine = HyperFormula.buildFromArray([['=1/0', '=GREET(A1)']], { licenseKey: 'gpl-v3' })
 
-  //   expect(engine.getCellValue(adr('B1'))).toEqualError(detailedError(ErrorType.DIV_BY_ZERO))
-  // })
+    expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR')
+    expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#DIV/0!')
+  })
 
-  // it('propagates #CYCLE! error', () => {
-  //   HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
+  it('propagates #CYCLE! error', () => {
+    HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations)
 
-  //   const engine = HyperFormula.buildFromArray([['=B1', '=GREET(A1)']])
+    const engine = HyperFormula.buildFromArray([['=B1', '=GREET(A1)']], { licenseKey: 'gpl-v3' })
 
 
-  //   expect(engine.getCellValue(adr('B1'))).toEqualError(detailedError(ErrorType.CYCLE))
-  // })
+    expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR')
+    expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#CYCLE!')
+  })
 })
   
