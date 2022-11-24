@@ -38,4 +38,3 @@ describe('GreetingsPlugin', () => {
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#CYCLE!')
   })
 })
-  
