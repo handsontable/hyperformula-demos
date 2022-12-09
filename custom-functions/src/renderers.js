@@ -1,5 +1,5 @@
-import { hf, sheetId } from "./hyperformulaConfig";
-import { ANIMATION_ENABLED } from "./ui";
+import { hf, sheetId } from './hyperformulaConfig';
+import { ANIMATION_ENABLED } from './ui';
 
 /**
  * Fill the HTML table with data.
@@ -7,17 +7,17 @@ import { ANIMATION_ENABLED } from "./ui";
  * @param {boolean} calculated `true` if it should render calculated values, `false` otherwise.
  */
 export function renderTable(calculated = false) {
-  const tbodyDOM = document.querySelector(".example tbody");
-  const updatedCellClass = ANIMATION_ENABLED ? "updated-cell" : "";
+  const tbodyDOM = document.querySelector('.example tbody');
+  const updatedCellClass = ANIMATION_ENABLED ? 'updated-cell' : '';
   const { height, width } = hf.getSheetDimensions(sheetId);
-  let newTbodyHTML = "";
+  let newTbodyHTML = '';
 
   for (let row = 0; row < height; row++) {
     for (let col = 0; col < width; col++) {
       const cellAddress = { sheet: sheetId, col, row };
       const cellHasFormula = hf.doesCellHaveFormula(cellAddress);
       const showFormula = calculated || !cellHasFormula;
-      let cellValue = "";
+      let cellValue = '';
 
       if (!hf.isCellEmpty(cellAddress) && showFormula) {
         cellValue = hf.getCellValue(cellAddress);
@@ -26,13 +26,13 @@ export function renderTable(calculated = false) {
       }
 
       newTbodyHTML += `<td class="${
-        cellHasFormula ? updatedCellClass : ""
+        cellHasFormula ? updatedCellClass : ''
       }"><span>
       ${cellValue}
       </span></td>`;
     }
 
-    newTbodyHTML += "</tr>";
+    newTbodyHTML += '</tr>';
   }
 
   tbodyDOM.innerHTML = newTbodyHTML;

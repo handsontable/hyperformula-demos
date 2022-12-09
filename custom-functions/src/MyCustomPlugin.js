@@ -40,16 +40,16 @@ export class MyCustomPlugin extends FunctionPlugin {
 // Static property with the custom functions definitions
 MyCustomPlugin.implementedFunctions = {
   GREET: {
-    method: "greet",
+    method: 'greet',
     parameters: [
-      { argumentType: "STRING" }
+      { argumentType: 'STRING' }
     ],
   },
   DOUBLE: {
-    method: "double",
+    method: 'double',
     arraySizeMethod: 'doubleResultArraySize',
     parameters: [
-      { argumentType: "RANGE" },
+      { argumentType: 'RANGE' },
     ],
   }
 };
@@ -57,11 +57,11 @@ MyCustomPlugin.implementedFunctions = {
 // Static property with the custom functions translations
 MyCustomPlugin.translations = {
   enGB: {
-    GREET: "GREET",
-    DOUBLE: "DOUBLE",
+    GREET: 'GREET',
+    DOUBLE: 'DOUBLE',
   },
   enUS: {
-    GREET: "GREET",
-    DOUBLE: "MAKE_TWICE",
+    GREET: 'GREET',
+    DOUBLE: 'MAKE_TWICE',
   }
 };
