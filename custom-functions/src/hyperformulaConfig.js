@@ -1,11 +1,11 @@
 import HyperFormula from 'hyperformula';
 import { tableData } from "./data";
-import { GreetingsPlugin } from "./GreetingsPlugin";
+import { MyCustomPlugin } from "./MyCustomPlugin";
 
 console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
 
 // Register the custom function plugin
-HyperFormula.registerFunctionPlugin(GreetingsPlugin, GreetingsPlugin.translations);
+HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPlugin.translations);
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
