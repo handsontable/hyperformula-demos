@@ -25,15 +25,27 @@ export class MyCustomPlugin extends FunctionPlugin {
       state,
       this.metadata('DOUBLE'),
       (range) => {
-        const doubledData = range.data.map(row => row.map(val => val)); // TODO
+        const dataAsNumbers = range.data.map(row => row.map(val => this.internalScalarValueToNumber(val)));
+
+        if (dataAsNumbers.some(row => row.some(val => val === undefined))) {
+          return new CellError('VALUE');
+        }
+
+        const doubledData = dataAsNumbers.map(row => row.map(val => val*2));
         return SimpleRangeValue.onlyValues(doubledData);
       },
     );
   }
 
+  internalScalarValueToNumber(value) {
+    const rawValue = value.val ?? value;
+    return typeof rawValue === 'number' ? rawValue : undefined;
+  }
+
   // TODO
   doubleResultArraySize(ast, state) {
-    return { width: 1, height: 3, isScalar: () => false }; // array size
+    console.log(ast);
+    return { width: 1, height: 3, isScalar: () => false }; // use ArraySize
   }
 }
 
