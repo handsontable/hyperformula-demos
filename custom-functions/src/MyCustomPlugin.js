@@ -11,7 +11,7 @@ export class MyCustomPlugin extends FunctionPlugin {
       this.metadata('GREET'),
       (firstName) => {
         if (!firstName) {
-          return new CellError('VALUE');
+          return new CellError('VALUE', 'The argument of the GREET function must be a non-empty string.');
         }
 
         return `👋 Hello, ${firstName}!`;
@@ -28,7 +28,7 @@ export class MyCustomPlugin extends FunctionPlugin {
         const dataAsNumbers = range.data.map(row => row.map(val => this.internalScalarValueToNumber(val)));
 
         if (dataAsNumbers.some(row => row.some(val => val === undefined))) {
-          return new CellError('VALUE');
+          return new CellError('VALUE', 'Function DOUBLE_RANGE operates only on numbers.');
         }
 
         const doubledData = dataAsNumbers.map(row => row.map(val => val*2));
