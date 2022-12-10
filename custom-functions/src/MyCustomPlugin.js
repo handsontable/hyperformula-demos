@@ -10,10 +10,6 @@ export class MyCustomPlugin extends FunctionPlugin {
       state,
       this.metadata('GREET'),
       (firstName) => {
-        if (!firstName) {
-          return new CellError('VALUE', 'The argument of the GREET function must be a non-empty string.');
-        }
-
         return `👋 Hello, ${firstName}!`;
       },
     );
@@ -45,7 +41,7 @@ export class MyCustomPlugin extends FunctionPlugin {
   doubleRangeResultArraySize(ast, state) {
     const arg = ast?.args?.[0];
 
-    if (!arg || !arg.start || !arg.end) {
+    if (arg?.start == null || arg?.end == null) {
       // return new ArraySize.scalar();
       return { width: 1, height: 1, isRef: false, isScalar: () => true };
     }
