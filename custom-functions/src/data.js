@@ -7,7 +7,7 @@ export const tableData = [
   ['Charles', '=GREET(A3)'],
   ['David', '=GREET(A4)'],
   ['-','-'],
-  [1, '=DOUBLE(A6:A9)'],
+  [1, '=DOUBLE_RANGE(A6:A9)'],
   [2],
   [3],
   [4],

@@ -9,21 +9,21 @@ export class MyCustomPlugin extends FunctionPlugin {
       ast.args,
       state,
       this.metadata('GREET'),
-      (username) => {
-        if (!username) {
+      (firstName) => {
+        if (!firstName) {
           return new CellError('VALUE');
         }
 
-        return `👋 Hello, ${username}!`;
+        return `👋 Hello, ${firstName}!`;
       },
     );
   }
 
-  double(ast, state) {
+  doubleRange(ast, state) {
     return this.runFunction(
       ast.args,
       state,
-      this.metadata('DOUBLE'),
+      this.metadata('DOUBLE_RANGE'),
       (range) => {
         const dataAsNumbers = range.data.map(row => row.map(val => this.internalScalarValueToNumber(val)));
 
@@ -42,7 +42,7 @@ export class MyCustomPlugin extends FunctionPlugin {
     return typeof rawValue === 'number' ? rawValue : undefined;
   }
 
-  doubleResultArraySize(ast, state) {
+  doubleRangeResultArraySize(ast, state) {
     const arg = ast?.args?.[0];
 
     if (!arg || !arg.start || !arg.end) {
@@ -64,9 +64,9 @@ MyCustomPlugin.implementedFunctions = {
       { argumentType: 'STRING' }
     ],
   },
-  DOUBLE: {
-    method: 'double',
-    arraySizeMethod: 'doubleResultArraySize',
+  DOUBLE_RANGE: {
+    method: 'doubleRange',
+    arraySizeMethod: 'doubleRangeResultArraySize',
     parameters: [
       { argumentType: 'RANGE' },
     ],
@@ -77,10 +77,10 @@ MyCustomPlugin.implementedFunctions = {
 MyCustomPlugin.translations = {
   enGB: {
     GREET: 'GREET',
-    DOUBLE: 'DOUBLE',
+    DOUBLE_RANGE: 'DOUBLE_RANGE',
   },
   enUS: {
     GREET: 'GREET',
-    DOUBLE: 'MAKE_TWICE',
+    DOUBLE_RANGE: 'MAKE_TWICE',
   }
 };
