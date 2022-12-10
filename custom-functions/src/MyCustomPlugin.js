@@ -42,10 +42,17 @@ export class MyCustomPlugin extends FunctionPlugin {
     return typeof rawValue === 'number' ? rawValue : undefined;
   }
 
-  // TODO
   doubleResultArraySize(ast, state) {
-    console.log(ast);
-    return { width: 1, height: 3, isScalar: () => false }; // use ArraySize
+    const arg = ast?.args?.[0];
+
+    if (!arg || !arg.start || !arg.end) {
+      return { width: 1, height: 1, isScalar: () => true }; // TODO: use ArraySize
+    }
+
+    const width = arg.end.col - arg.start.col + 1;
+    const height = arg.end.row - arg.start.row + 1;
+
+    return { width, height, isScalar: () => width === 1 && height === 1 }; // TODO: use ArraySize
   }
 }
 
