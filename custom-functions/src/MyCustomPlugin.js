@@ -46,13 +46,15 @@ export class MyCustomPlugin extends FunctionPlugin {
     const arg = ast?.args?.[0];
 
     if (!arg || !arg.start || !arg.end) {
-      return { width: 1, height: 1, isScalar: () => true }; // TODO: use ArraySize
+      // return new ArraySize.scalar();
+      return { width: 1, height: 1, isRef: false, isScalar: () => true };
     }
 
     const width = arg.end.col - arg.start.col + 1;
     const height = arg.end.row - arg.start.row + 1;
 
-    return { width, height, isScalar: () => width === 1 && height === 1 }; // TODO: use ArraySize
+    // return new ArraySize(width, height);
+    return { width, height, isRef: false, isScalar: () => width === 1 && height === 1 };
   }
 }
 

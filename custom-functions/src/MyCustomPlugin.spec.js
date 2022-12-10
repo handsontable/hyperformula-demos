@@ -1,7 +1,7 @@
 import { HyperFormula } from 'hyperformula';
 import { MyCustomPlugin } from './MyCustomPlugin';
 
-describe('MyCustomPlugin', () => {
+describe('GREET function', () => {
   it('works for a non-empty string', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPlugin.translations)
 
