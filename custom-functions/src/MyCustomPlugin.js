@@ -1,4 +1,4 @@
-import { FunctionPlugin, CellError, SimpleRangeValue } from 'hyperformula';
+import { FunctionPlugin, CellError, SimpleRangeValue, ArraySize } from 'hyperformula';
 
 /**
  * Custom function plugin.
@@ -21,7 +21,8 @@ export class MyCustomPlugin extends FunctionPlugin {
       state,
       this.metadata('DOUBLE_RANGE'),
       (range) => {
-        const dataAsNumbers = range.data.map(row => row.map(val => this.internalScalarValueToNumber(val)));
+        const rangeData = range.data;
+        const dataAsNumbers = rangeData.map(row => row.map(val => this.internalScalarValueToNumber(val)));
 
         if (dataAsNumbers.some(row => row.some(val => val === undefined))) {
           return new CellError('VALUE', 'Function DOUBLE_RANGE operates only on numbers.');
@@ -42,15 +43,13 @@ export class MyCustomPlugin extends FunctionPlugin {
     const arg = ast?.args?.[0];
 
     if (arg?.start == null || arg?.end == null) {
-      // return new ArraySize.scalar();
-      return { width: 1, height: 1, isRef: false, isScalar: () => true };
+      return ArraySize.scalar();
     }
 
     const width = arg.end.col - arg.start.col + 1;
     const height = arg.end.row - arg.start.row + 1;
 
-    // return new ArraySize(width, height);
-    return { width, height, isRef: false, isScalar: () => width === 1 && height === 1 };
+    return new ArraySize(width, height);
   }
 }
 
