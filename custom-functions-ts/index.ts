@@ -4,7 +4,7 @@
 const txt: string = "world";
 console.log("hello", txt);
 
-import HyperFormula, { FunctionPlugin, FunctionArgumentType } from 'hyperformula';
+import { HyperFormula, FunctionPlugin, FunctionArgumentType } from 'hyperformula';
 
 export class MyCustomPlugin extends FunctionPlugin {
   public static translations;

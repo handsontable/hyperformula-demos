@@ -3,6 +3,8 @@
     "index.ts"
   ],
   "compilerOptions": {
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "target": "es6",
+    "moduleResolution": "node"
   }
 }
