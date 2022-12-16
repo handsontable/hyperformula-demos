@@ -6,7 +6,7 @@ console.log("hello", txt);
 
 import HyperFormula from 'hyperformula';
 
-const config = {
+const hf = HyperFormula.buildEmpty({
   language: 'enGB', // TODO: change to enUS
   dateFormats: ['MM/DD/YYYY', 'MM/DD/YY', 'YYYY/MM/DD'],
   timeFormats: ['hh:mm', 'hh:mm:ss.sss'],
@@ -16,7 +16,4 @@ const config = {
   currencySymbol: ['$', 'USD'],
   localeLang: 'en-US',
   licenseKey: "gpl-v3",
-}
-
-// Create an empty HyperFormula instance.
-const hf = HyperFormula.buildEmpty(config);
+});
