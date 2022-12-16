@@ -1,0 +1,16 @@
+{
+  "name": "custom-functions-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "hyperformula": "^2.3.0-alpha",
+    "typescript": "^4.9.4"
+  }
+}
