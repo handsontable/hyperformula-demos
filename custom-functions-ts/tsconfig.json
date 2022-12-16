@@ -1,0 +1,8 @@
+{
+  "include": [
+    "index.ts"
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true
+  }
+}

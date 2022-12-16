@@ -1,5 +1,5 @@
 // usage:
-// npm run tsc -- index.ts && node index.js
+// npm run tsc && node index.js
 
 const txt: string = "world";
 console.log("hello", txt);
