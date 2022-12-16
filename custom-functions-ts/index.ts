@@ -4,7 +4,21 @@
 const txt: string = "world";
 console.log("hello", txt);
 
-import HyperFormula from 'hyperformula';
+import HyperFormula, { FunctionPlugin } from 'hyperformula';
+
+export class MyCustomPlugin extends FunctionPlugin {
+  
+}
+
+MyCustomPlugin.implementedFunctions = {
+  // let's define the function's ID as `GREET`
+  GREET: {
+    method: "greet",
+    parameters: [
+      { argumentType: "STRING" }
+    ],
+  }
+};
 
 const hf = HyperFormula.buildEmpty({
   language: 'enGB', // TODO: change to enUS
