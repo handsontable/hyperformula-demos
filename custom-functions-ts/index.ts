@@ -20,6 +20,16 @@ MyCustomPlugin.implementedFunctions = {
   }
 };
 
+MyCustomPlugin.translations = {
+  enGB: {
+    GREET: "GREET",
+  },
+  enUS: {
+    GREET: "GREET",
+  }
+  // repeat for all languages used in your system...
+};
+
 const hf = HyperFormula.buildEmpty({
   language: 'enGB', // TODO: change to enUS
   dateFormats: ['MM/DD/YYYY', 'MM/DD/YY', 'YYYY/MM/DD'],
