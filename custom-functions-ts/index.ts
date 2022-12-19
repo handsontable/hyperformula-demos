@@ -19,6 +19,18 @@ export class MyCustomPlugin extends FunctionPlugin {
       },
     );
   }
+
+  doubleRange(ast, state) {
+    return this.runFunction(
+      ast.args,
+      state,
+      this.metadata('DOUBLE_RANGE'),
+      (range) => {
+        const rangeData = range.data;
+        // ...
+      },
+    );
+    }
 }
 
 MyCustomPlugin.implementedFunctions = {
@@ -27,6 +39,12 @@ MyCustomPlugin.implementedFunctions = {
     method: "greet",
     parameters: [
       { argumentType: FunctionArgumentType.STRING }
+    ],
+  },
+  DOUBLE_RANGE: {
+    method: 'doubleRange',
+    parameters: [
+      { argumentType: 'RANGE' },
     ],
   }
 };
