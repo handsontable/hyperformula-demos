@@ -26,8 +26,8 @@ export class MyCustomPlugin extends FunctionPlugin {
       state,
       this.metadata('DOUBLE_RANGE'),
       (range) => {
-        const rangeData = range.data;
-        // ...
+        const resultArray = //...
+        return SimpleRangeValue.onlyValues(resultArray);
       },
     );
     }
