@@ -44,7 +44,7 @@ MyCustomPlugin.implementedFunctions = {
   DOUBLE_RANGE: {
     method: 'doubleRange',
     parameters: [
-      { argumentType: 'RANGE' },
+      { argumentType: FunctionArgumentType.RANGE },
     ],
   }
 };
