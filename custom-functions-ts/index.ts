@@ -4,7 +4,7 @@
 const txt: string = "world";
 console.log("hello", txt);
 
-import { HyperFormula, FunctionPlugin, FunctionArgumentType } from 'hyperformula';
+import { HyperFormula, FunctionPlugin, FunctionArgumentType, CellError, SimpleRangeValue, ArraySize, ErrorType } from 'hyperformula';
 
 export class MyCustomPlugin extends FunctionPlugin {
   public static translations;
@@ -32,17 +32,30 @@ export class MyCustomPlugin extends FunctionPlugin {
 
     return new ArraySize(width, height);
   }
+
+  internalScalarValueToNumber(value) {
+    const rawValue = value.val ?? value;
+    return typeof rawValue === 'number' ? rawValue : undefined;
+  }
+
   doubleRange(ast, state) {
     return this.runFunction(
       ast.args,
       state,
       this.metadata('DOUBLE_RANGE'),
       (range) => {
-        const resultArray = //...
-        return SimpleRangeValue.onlyValues(resultArray);
+        const rangeData = range.data;
+        const dataAsNumbers = rangeData.map(row => row.map(val => this.internalScalarValueToNumber(val)));
+
+        if (dataAsNumbers.some(row => row.some(val => val === undefined))) {
+          return new CellError(ErrorType.VALUE, 'Function DOUBLE_RANGE operates only on numbers.');
+        }
+
+        const doubledData = dataAsNumbers.map(row => row.map(val => val*2));
+        return SimpleRangeValue.onlyValues(doubledData);
       },
     );
-    }
+  }
 }
 
 MyCustomPlugin.implementedFunctions = {
@@ -65,9 +78,11 @@ MyCustomPlugin.implementedFunctions = {
 MyCustomPlugin.translations = {
   enGB: {
     GREET: "GREET",
+    DOUBLE_RANGE: "DOUBLE_RANGE",
   },
   enUS: {
     GREET: "GREET",
+    DOUBLE_RANGE: "DOUBLE_RANGE",
   }
   // repeat for all languages used in your system...
 };
@@ -90,9 +105,9 @@ const sheetName = hf.addSheet("main");
 const sheetId = hf.getSheetId(sheetName);
 
 const tableData = [
-  ["Greg Black", "=GREET(A1)", "05/23/1989", "=YEAR(NOW())-YEAR(C1)", "$80,000.00"],
-  ["Anne Carpenter", "12:30 PM", "01/01/1980", "=YEAR(NOW())-YEAR(C2)", "$95,000.00"],
-  ["Natalie Dem", "1:30 PM", "12/13/1973", "=YEAR(NOW())-YEAR(C3)","$78,500.00"],
+  ["Greg Black", "=GREET(A1)", "=DOUBLE_RANGE(D1:D3)", 10, "$80,000.00"],
+  ["Anne Carpenter", "12:30 PM", null, 20, "$95,000.00"],
+  ["Natalie Dem", "1:30 PM", null, 30,"$78,500.00"],
   ["John Sieg", "2:00 PM", "10/31/1995", "=YEAR(NOW())-YEAR(C4)", "$114,000.00"],
   ["Chris Aklips", "11:30 AM", "08/18/1987", "=YEAR(NOW())-YEAR(C5)", "$71,900.00"],
   ["AVERAGE", null, null, "=AVERAGE(D1:D5)", "=AVERAGE(E1:E5)"]
