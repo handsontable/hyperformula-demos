@@ -20,6 +20,18 @@ export class MyCustomPlugin extends FunctionPlugin {
     );
   }
 
+  doubleRangeResultArraySize(ast, state) {
+    const arg = ast?.args?.[0];
+
+    if (arg?.start == null || arg?.end == null) {
+      return ArraySize.scalar();
+    }
+
+    const width = arg.end.col - arg.start.col + 1;
+    const height = arg.end.row - arg.start.row + 1;
+
+    return new ArraySize(width, height);
+  }
   doubleRange(ast, state) {
     return this.runFunction(
       ast.args,
@@ -43,6 +55,7 @@ MyCustomPlugin.implementedFunctions = {
   },
   DOUBLE_RANGE: {
     method: 'doubleRange',
+    arraySizeMethod: 'doubleRangeResultArraySize',
     parameters: [
       { argumentType: FunctionArgumentType.RANGE },
     ],
