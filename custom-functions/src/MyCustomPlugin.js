@@ -1,4 +1,4 @@
-import { FunctionPlugin, CellError, SimpleRangeValue, ArraySize } from 'hyperformula';
+import { FunctionPlugin, CellError, SimpleRangeValue, ArraySize, FunctionArgumentType } from 'hyperformula';
 
 /**
  * Custom function plugin.
@@ -58,20 +58,20 @@ MyCustomPlugin.implementedFunctions = {
   GREET: {
     method: 'greet',
     parameters: [
-      { argumentType: 'STRING' }
+      { argumentType: FunctionArgumentType.STRING }
     ],
   },
   DOUBLE_RANGE: {
     method: 'doubleRange',
     arraySizeMethod: 'doubleRangeResultArraySize',
     parameters: [
-      { argumentType: 'RANGE' },
+      { argumentType: FunctionArgumentType.RANGE },
     ],
   }
 };
 
-// Static property with the custom functions translations
-MyCustomPlugin.translations = {
+// Custom functions translations
+export const MyCustomPluginTranslations = {
   enGB: {
     GREET: 'GREET',
     DOUBLE_RANGE: 'DOUBLE_RANGE',
