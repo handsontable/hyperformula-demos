@@ -1,5 +1,5 @@
-import { renderTable } from "./renderers";
-import { bindEvents } from "./ui";
+import { renderTable } from './renderers';
+import { bindEvents } from './ui';
 
 // Bind the button events.
 bindEvents();

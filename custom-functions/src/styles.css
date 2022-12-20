@@ -47,23 +47,6 @@ table tbody tr td:first-child span {
   margin-left: 0;
 }
 
-table tbody tr td:first-child span::before {
-  counter-increment: row-counter;
-  content: counter(row-counter);
-  display: inline-block;
-  width: 20px;
-  position: relative;
-  left: -10px;
-  margin: 15px 0 15px 0;
-}
-
-table thead tr th::before {
-  counter-increment: col-counter;
-  content: counter(col-counter, upper-alpha);
-  display: inline-block;
-  width: 20px;
-}
-
 table tbody tr td.updated-cell span {
   animation-name: cell-appear;
   animation-duration: 0.6s;
