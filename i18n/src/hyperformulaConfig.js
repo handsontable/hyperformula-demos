@@ -1,4 +1,5 @@
 import HyperFormula from "hyperformula";
+import enUS from "hyperformula/es/i18n/languages/enUS.mjs"
 import { tableData } from "./data";
 
 console.log(
@@ -7,7 +8,7 @@ console.log(
 );
 
 const config = {
-  language: 'enGB', // TODO: change to enUS
+  language: 'enUS',
   dateFormats: ['MM/DD/YYYY', 'MM/DD/YY', 'YYYY/MM/DD'],
   timeFormats: ['hh:mm', 'hh:mm:ss.sss'],
   decimalSeparator: '.',
@@ -17,6 +18,8 @@ const config = {
   localeLang: 'en-US',
   licenseKey: "gpl-v3",
 }
+
+HyperFormula.registerLanguage('enUS', enUS);
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty(config);
