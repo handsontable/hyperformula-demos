@@ -1,5 +1,5 @@
 import HyperFormula from "hyperformula";
-import enUS from "hyperformula/es/i18n/languages/enUS.mjs"
+import enUS from "hyperformula/es/i18n/languages/enUS"
 import { tableData } from "./data";
 
 console.log(
