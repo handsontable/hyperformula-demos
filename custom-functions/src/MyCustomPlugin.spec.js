@@ -1,5 +1,5 @@
 import { HyperFormula } from 'hyperformula';
-import { MyCustomPlugin } from './MyCustomPlugin';
+import { MyCustomPlugin, MyCustomPluginTranslations } from './MyCustomPlugin';
 
 describe('GREET function', () => {
   it('works for a non-empty string', () => {
