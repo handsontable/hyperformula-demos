@@ -1,5 +1,4 @@
 import "core-js/proposals/reflect-metadata";
-import "milligram";
 
 import { enableProdMode } from "@angular/core";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";

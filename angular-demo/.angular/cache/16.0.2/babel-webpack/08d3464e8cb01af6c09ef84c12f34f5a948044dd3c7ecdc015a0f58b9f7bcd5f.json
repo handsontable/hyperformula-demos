@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\r\n * @license\r\n * Copyright (c) 2023 Handsoncode. All rights reserved.\r\n */\nimport { FunctionPlugin, FunctionArgumentType } from './plugin/FunctionPlugin';\nexport { FunctionPlugin, FunctionArgumentType };","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

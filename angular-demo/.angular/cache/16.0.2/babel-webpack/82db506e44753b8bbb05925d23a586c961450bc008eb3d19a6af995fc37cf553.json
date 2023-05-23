@@ -1,0 +1,1 @@
+{"ast":null,"code":"// needs a separate module as this is required inside chevrotain productive code\n// and also in the entry point for webpack(api.ts).\n// A separate file avoids cyclic dependencies and webpack errors.\nexport var VERSION = \"6.5.0\";\n//# sourceMappingURL=version.js.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
