@@ -2,8 +2,10 @@
  * Initial table data.
  */
  export const tableData = [
-  ['relative', 'relative', '=ADDRESS(1, 1, 4)', '=ADDRESS(1, 1, 4, FALSE())'],
-  ['absolute', 'relative', '=ADDRESS(1, 1, 3)', '=ADDRESS(1, 1, 3, FALSE())'],
-  ['relative', 'absolute', '=ADDRESS(1, 1, 2)', '=ADDRESS(1, 1, 2, FALSE())'],
-  ['absolute', 'absolute', '=ADDRESS(1, 1)', '=ADDRESS(1, 1, 1, FALSE())'],
+  ['80', '=IFS(A1>89, "A", A1>79, "B", A1>69, "C", A1>59, "D", TRUE(), "F")'],
+  ['72', '=IFS(A2>89, "A", A2>79, "B", A2>69, "C", A2>59, "D", TRUE(), "F")'],
+  ['93', '=IFS(A3>89, "A", A3>79, "B", A3>69, "C", A3>59, "D", TRUE(), "F")'],
+  ['34', '=IFS(A4>89, "A", A4>79, "B", A4>69, "C", A4>59, "D", TRUE(), "F")'],
+  ['72', '=IFS(A5>89, "A", A5>79, "B", A5>69, "C", A5>59, "D", TRUE(), "F")'],
+  ['61', '=IFS(A6>89, "A", A6>79, "B", A6>69, "C", A6>59, "D", TRUE(), "F")'],
 ];
