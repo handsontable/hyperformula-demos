@@ -12,8 +12,6 @@ const config = {
   dateFormats: ['MM/DD/YYYY', 'MM/DD/YY', 'YYYY/MM/DD'],
   timeFormats: ['hh:mm', 'hh:mm:ss.sss'],
   decimalSeparator: '.',
-  thousandSeparator: ',',
-  functionArgSeparator: ';',
   currencySymbol: ['$', 'USD'],
   localeLang: 'en-US',
   licenseKey: "gpl-v3",
@@ -37,5 +35,7 @@ hf.setCellContents(
   },
   tableData
 );
+
+console.log(hf.getSheetValues(0));
 
 export { hf, sheetName, sheetId };

@@ -1,7 +1,7 @@
 import { hf } from "./hyperformulaConfig";
 import moment from "moment";
 
-const columnTypes = ['string', 'time', 'date', 'number', 'currency'];
+const columnTypes = ['string', 'string', 'string', 'string'];
 
 /**
  * Display value in human-readable format

@@ -20,10 +20,6 @@ body {
   margin-bottom: 20px;
 }
 
-table tbody tr:last-child {
-  font-weight: 600;
-}
-
 table tbody tr:last-child td:first-child {
   text-align: right;
 }
