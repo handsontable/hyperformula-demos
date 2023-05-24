@@ -4,6 +4,7 @@ import { RowView } from "./Row.view";
 import { CellView } from "./Cell.view";
 
 export type TableProps = {
+  children?: React.ReactNode;
   colgroupWidths?: number[];
 };
 

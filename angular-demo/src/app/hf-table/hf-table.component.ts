@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { EmployeesService } from "../employees/employees.service";
 import { Observable } from 'rxjs';
 
@@ -8,8 +8,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./hf-table.component.scss']
 })
 export class HfTableComponent {
-  employees$ = this._employeesService.employees;
-  totals$ = this._employeesService.totals;
+  employees$?: Observable<any[]>;
+  totals$?: Observable<any[]>;
 
-  constructor(private _employeesService: EmployeesService) {}
+  constructor(private _employeesService: EmployeesService) {
+    if (this._employeesService) {
+      this.employees$ = this._employeesService.employees;
+      this.totals$ = this._employeesService.totals;
+    }
+  }
 }

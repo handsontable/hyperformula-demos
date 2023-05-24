@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export type RowProps = {
+  children?: React.ReactNode;
   className?: string;
 };
 

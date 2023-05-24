@@ -19,7 +19,6 @@ const EMPLOYEE_SHEET_ID = "employeeSheet";
 export class EmployeesService {
   private hf: HyperFormula;
   private sheetId: number;
-  private sheetName: string;
 
   private _employees = new BehaviorSubject<any[]>([]);
   private _totals = new BehaviorSubject<any[]>([]);
@@ -33,7 +32,6 @@ export class EmployeesService {
 
     this.hf = hf;
     this.sheetId = sheetId;
-    this.sheetName = sheetName;
 
     // Fill the HyperFormula sheet with data.
     initHFValues(hf, sheetId, EMPLOYEES);
@@ -65,15 +63,15 @@ export class EmployeesService {
       return (this.hf.calculateFormula(expression, this.sheetId) as number).toFixed(2);
     });
 
-    this._employees.next(Object.assign({}, this.dataStore).employees);
-    this._totals.next(Object.assign({}, this.dataStore).totals);
+    this._employees.next([ ...this.dataStore.employees ]);
+    this._totals.next([ ...this.dataStore.totals ]);
   }
 
   public reset() {
     this.dataStore.employees = EMPLOYEES;
     this.dataStore.totals = TOTALS;
 
-    this._employees.next(Object.assign({}, this.dataStore).employees);
-    this._totals.next(Object.assign({}, this.dataStore).totals);
+    this._employees.next([ ...this.dataStore.employees ]);
+    this._totals.next([ ...this.dataStore.totals ]);
   }
 }
