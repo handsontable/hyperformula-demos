@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "exceljs": "^4.3.0",
-    "hyperformula": "2.4.x"
+    "hyperformula": "2.5.x"
   }
 }

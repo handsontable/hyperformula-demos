@@ -8,7 +8,7 @@
     "build": "ng build"
   },
   "dependencies": {
-    "hyperformula": "2.4.x",
+    "hyperformula": "2.5.x",
     "@angular/animations": "^16.0.2",
     "@angular/common": "^16.0.2",
     "@angular/compiler": "^16.0.2",
