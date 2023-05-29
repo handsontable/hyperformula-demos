@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/milligram/dist/milligram.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
