@@ -9,7 +9,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "2.5.x",
+    "hyperformula": "2.6.x",
     "moment": "2.26.0"
   },
   "devDependencies": {

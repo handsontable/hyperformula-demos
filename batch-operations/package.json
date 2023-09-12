@@ -9,7 +9,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "2.5.x"
+    "hyperformula": "2.6.x"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",

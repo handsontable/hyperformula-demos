@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "hyperformula": "2.5.x",
+    "hyperformula": "2.6.x",
     "vue": "^2.7.13",
     "@vue/cli-plugin-babel": "^5.0.8",
     "milligram": "^1.4.0"
