@@ -9,7 +9,7 @@ console.log(
 export const hf = HyperFormula.buildFromArray([], {
   licenseKey: 'gpl-v3',
   maxRows: 500100,
-  chooseAddressMappingPolicy: new AlwaysDense(), // TODO: remove
+  chooseAddressMappingPolicy: new AlwaysDense(),
 })
 
 export const sheetId = 0
