@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  counter-reset: row-counter;
+  padding: 15px;
+}
+
+.example header {
+  height: 52px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.example button.run {
+  width: 230px;
+  background-color: #1c49e4;
+  border-color: #1c49e4;
+  margin: auto 0;
+}
+
+.example button.run:hover {
+  background-color: #2350ea;
+}
+
+table {
+  margin-left: 10px;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+td:first-child, th:first-child {
+  padding: 1.2rem 1.5rem;
+}
+
+table tbody tr td.updated-cell span {
+  animation-name: cell-appear;
+  animation-duration: 0.6s;
+}
+
+@keyframes cell-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loader {
+  margin-top: 4px;
+  width: 28px;
+  height: 28px;
+  border: 3px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+} 

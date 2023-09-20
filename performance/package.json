@@ -1,0 +1,20 @@
+{
+  "name": "hyperformula-i18n-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel --no-source-maps index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "hyperformula": "2.6.x",
+    "moment": "2.26.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}
