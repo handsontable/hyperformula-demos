@@ -58,7 +58,7 @@ export async function run() {
   renderTable(true);
 
   const loadingTimeMessageContainer = document.querySelector("#message");
-  loadingTimeMessageContainer.innerHTML = `Loading time: ${(ty2 - ty1)/1000} seconds.`;
+  loadingTimeMessageContainer.innerHTML = `Loading time: <strong>${(ty2 - ty1)/1000}</strong> seconds.`;
 
   toggleLoader(false);
   await redraw();
