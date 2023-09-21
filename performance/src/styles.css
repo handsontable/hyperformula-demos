@@ -5,17 +5,17 @@ body {
 }
 
 .example header {
-  height: 52px;
+  height: 76px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  justify-content: flex-start;
 }
 
 .example button.run {
   width: 230px;
   background-color: #1c49e4;
   border-color: #1c49e4;
-  margin: auto 0;
 }
 
 .example button.run:hover {

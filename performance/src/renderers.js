@@ -10,10 +10,10 @@ import { ANIMATION_ENABLED } from "./ui";
 export function renderTable(calculated = false) {
   const tbodyDOM = document.querySelector(".example tbody");
   const updatedCellClass = ANIMATION_ENABLED ? "updated-cell" : "";
-  const { height, width } = hf.getSheetDimensions(sheetId);
+  const { width } = hf.getSheetDimensions(sheetId);
   let newTbodyHTML = "";
 
-  for (let row = 0; row < height; row++) {
+  for (let row = 0; row < 50; row++) {
     for (let col = 0; col < width; col++) {
       const cellAddress = { sheet: sheetId, col, row };
       const cellHasFormula = hf.doesCellHaveFormula(cellAddress);
@@ -35,7 +35,7 @@ export function renderTable(calculated = false) {
 
 export function toggleLoader(showLoader = true) {
   const runButtonLabel = document.querySelector("#run-button-label");
-  runButtonLabel.innerHTML = showLoader ? '' : 'Reload';
+  runButtonLabel.innerHTML = showLoader ? '' : 'Reload 1M data cells';
   if (showLoader) {
     runButtonLabel.classList.add("loader");
     return;
@@ -56,14 +56,9 @@ export async function run() {
   loadSpreadsheet();
   const ty2 = (new Date()).getTime();
   renderTable(true);
-  const ty3 = (new Date()).getTime();
 
   const loadingTimeMessageContainer = document.querySelector("#message");
-  loadingTimeMessageContainer.innerHTML = `
-    Loading time: ${(ty2 - ty1)/1000} seconds.
-    <br/>
-    Rendering time: ${(ty3 - ty2)/1000} seconds.
-  `;
+  loadingTimeMessageContainer.innerHTML = `Loading time: ${(ty2 - ty1)/1000} seconds.`;
 
   toggleLoader(false);
   await redraw();
