@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HyperFormula Performance Demo</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="example">
+      <h5 id="hyperformula-version"></h5>
+      <header>
+        <button id="run" class="button run">
+          <span id="run-button-label">Load 1M data cells</span>
+        </button>
+        <div id="message">
+        </div>
+      </header>
+      <table>
+        <colgroup>
+          <col style="width:20%" />
+          <col style="width:20%" />
+          <col style="width:20%" />
+          <col style="width:20%" />
+          <col style="width:20%" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
