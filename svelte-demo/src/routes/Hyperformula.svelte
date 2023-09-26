@@ -29,7 +29,7 @@
   .example button.run {
     background-color: #1c49e4;
     border-color: #1c49e4;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .example button.run:hover {
