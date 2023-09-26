@@ -11,7 +11,7 @@
 
 <style>
   #main {
-    padding: 50px;
+    padding: 10px;
   }
 </style>
 
