@@ -16,6 +16,5 @@
 </style>
 
 <div id="main">
-  <h1>Hyperformula SvelteKit example</h1>
   <HyperFormula {data} {options} />
 </div>
