@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineProps<{
-  data: string[][]
-  totals: string[]
+  data: (string | number)[][]
+  totals: (string | number)[]
 }>()
 
-function formatNumber(numberAsString: string): string {
+function formatNumber(numberAsString: string | number): string {
   const numericValue = Number(numberAsString)
-  return isNaN(numericValue) ? numberAsString : numericValue.toFixed(2)
+  return isNaN(numericValue) ? String(numberAsString) : numericValue.toFixed(2)
 }
 </script>
 
