@@ -11,11 +11,10 @@
 
 <style>
   #main {
-    padding: 50px;
+    padding: 10px;
   }
 </style>
 
 <div id="main">
-  <h1>Hyperformula SvelteKit example</h1>
   <HyperFormula {data} {options} />
 </div>
