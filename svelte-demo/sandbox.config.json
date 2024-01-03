@@ -1,4 +1,5 @@
 {
     "node": "16",
-    "template": "node"
+    "template": "node",
+    "file": "src/routes/Hyperformula.svelte"
 }
