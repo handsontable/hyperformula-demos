@@ -2,6 +2,7 @@
 	"name": "hyperformula-svelte-demo",
 	"version": "0.0.1",
 	"private": true,
+	"main": "src/routes/Hyperformula.svelte",
 	"scripts": {
 		"start": "vite dev",
 		"build": "vite build",
