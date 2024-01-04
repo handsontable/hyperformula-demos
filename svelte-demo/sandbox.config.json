@@ -1,5 +1,4 @@
 {
     "node": "16",
-    "template": "node",
-    "file": "package.json"
+    "template": "node"
 }
