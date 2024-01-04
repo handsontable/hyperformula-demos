@@ -1,4 +1,4 @@
 {
     "node": "16",
-    "template": "vue"
+    "template": "vue-cli"
 }
