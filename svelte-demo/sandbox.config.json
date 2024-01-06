@@ -1,4 +1,4 @@
 {
     "node": "16",
-    "template": "static"
+    "template": "node"
 }
