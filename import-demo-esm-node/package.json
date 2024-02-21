@@ -1,0 +1,13 @@
+{
+  "name": "node-esm-demo",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "hyperformula": "^2.7.5-esm"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.3.0",
+    "hyperformula": "^2.7.5-esm"
+  }
+}
