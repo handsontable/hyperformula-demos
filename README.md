@@ -70,6 +70,13 @@ This command updates the `package.json` file in all demos to use version *x.y.z*
 sh set-hyperformula-version.sh x.y.z
 ```
 
+This command updates the `package-lock.json` file in all demos to use the latest version of hyperformula:
+
+```bash
+# in hyperformula-demos directory
+sh update-hyperformula-in-lock-files.sh
+```
+
 ### Testing the demos with an unpublished version of HyperFormula
 
 To achieve this a private package registry (such as [verdaccio](https://verdaccio.org/)) is necessary.
