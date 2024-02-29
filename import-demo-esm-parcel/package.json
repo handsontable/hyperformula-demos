@@ -3,17 +3,19 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
   "scripts": {
     "start": "parcel --no-source-maps index.html --open",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "^2.7.5-esm"
+    "hyperformula": "^2.7.8-esm",
+    "parcel": "^2.11.0"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
+    "@babel/core": "7.2.0"
   },
-  "keywords": []
+  "keywords": [],
+  "@parcel/resolver-default": {
+    "packageExports": true
+  }
 }

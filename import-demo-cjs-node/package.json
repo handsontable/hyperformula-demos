@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "exceljs": "^4.3.0",
-    "hyperformula": "^2.7.5-esm"
+    "hyperformula": "^2.7.8-esm"
   }
 }
