@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HyperFormula Mortgage Calculator</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Mortgage Calculator</h2>
+      <div class="input-group">
+        <label for="annual-interest-rate">Annual Interest Rate (%)</label>
+        <input type="number" id="annual-interest-rate" min="0" step="0.01" value="8">
+      </div>
+      <div class="input-group">
+        <label for="number-of-months">Number of Months</label>
+        <input type="number" id="number-of-months" min="0" value="10">
+      </div>
+      <div class="input-group">
+        <label for="loan-amount">Loan Amount ($)</label>
+        <input type="number" id="loan-amount" min="0" value="10000">
+      </div>
+      <div class="result">
+        <h3>Monthly Payment:</h3>
+        <span id="monthly-payment-placeholder">---</span>
+      </div>
+    </div>
+
+    <script type="module" src="src/index.js"></script>
+  </body>
+</html>
