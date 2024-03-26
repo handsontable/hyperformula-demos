@@ -1,0 +1,17 @@
+{
+  "name": "hyperformula-mortgage-calculator",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel --no-source-maps index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "hyperformula": "2.6.x"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "keywords": []
+}
