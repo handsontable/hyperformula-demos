@@ -11,7 +11,7 @@
     "hyperformula": "2.6.x"
   },
   "devDependencies": {
-    "parcel": "^2.12.0"
+    "parcel-bundler": "^1.6.1"
   },
   "keywords": []
 }
