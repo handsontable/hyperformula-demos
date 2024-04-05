@@ -12,7 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "hyperformula": "2.7.x",
+    "hyperformula": "2.6.x",
     "milligram": "^1.4.1",
     "vue": "^3.3.4"
   },
