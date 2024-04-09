@@ -83,5 +83,8 @@
         }
       }
     }},
-  "defaultProject": "example-hf"
+  "defaultProject": "example-hf",
+  "cli": {
+    "analytics": false
+  }
 }
