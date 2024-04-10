@@ -6,6 +6,6 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./app-button.component.scss"]
 })
 export class AppButton {
-  @Input() outline: boolean;
+  @Input() outline: boolean = false;
   @Input() text: string = "test";
 }
