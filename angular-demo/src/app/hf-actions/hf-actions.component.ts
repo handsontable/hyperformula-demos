@@ -10,10 +10,12 @@ export class HfActionsComponent {
   constructor(private _employeesService: EmployeesService) {}
 
   public handleClickRunCalculations() {
+    console.log("handleClickRunCalculations");
     this._employeesService.calculate();
   }
 
   public handleClickReset() {
+    console.log("handleClickReset");
     this._employeesService.reset();
   }
 }
