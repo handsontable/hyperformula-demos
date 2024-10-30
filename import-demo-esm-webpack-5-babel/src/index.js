@@ -1,4 +1,4 @@
-import { HyperFormula, AlwaysDense, RawTranslationPackage } from 'hyperformula';
+import { HyperFormula, AlwaysDense } from 'hyperformula';
 
 // new way
 import { enUS } from "hyperformula/i18n/languages"; 
@@ -23,4 +23,4 @@ HyperFormula.registerLanguage('csCZ', csCZ);
 HyperFormula.registerLanguage('daDK', daDK);
 HyperFormula.registerLanguage('deDE', deDE);
 
-// npm i --registry http://localhost:4873 hyperformula@2.7.9-esm
+// npm i --registry http://localhost:4873 hyperformula@2.7.8-esm
