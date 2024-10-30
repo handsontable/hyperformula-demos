@@ -1,32 +1,27 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const safePostCssParser = require('postcss-safe-parser');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const ROOT_DIRECTORY = process.cwd();
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     main: path.resolve(ROOT_DIRECTORY, 'src/index.js'),
   },
   output: {
     path: path.resolve(ROOT_DIRECTORY, 'build'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js',
+    filename: '[name].[contenthash:8].bundle.js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
   },
-  devServer: {
-    contentBase: path.resolve(ROOT_DIRECTORY, 'build'),
-    compress: true,
-    port: 3000,
-    overlay: true,
-  },
-  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        include: /node_modules/,
-        type: "javascript/auto",
-      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -42,7 +37,7 @@ module.exports = {
         test: /\.css$/,
         exclude: /\.module\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -65,7 +60,7 @@ module.exports = {
       {
         test: /\.module\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -90,7 +85,7 @@ module.exports = {
       {
         test: /\.module\.(sass|scss)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -147,9 +142,88 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(ROOT_DIRECTORY, 'src/index.html'),
       filename: 'index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:8].bundle.css',
+      chunkFilename: '[name].[contenthash:8].chunk.css',
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      compressionOptions: { level: 9 },
+      filename: '[path].gz[query]',
+      minRatio: 0.8,
+      test: /\.(js|css|html|svg)$/,
+    }),
+    new CompressionPlugin({
+      algorithm: 'brotliCompress',
+      compressionOptions: { level: 11 },
+      filename: '[path].br[query]',
+      minRatio: 0.8,
+      test: /\.(js|css|html|svg)$/,
     }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            comparisons: false,
+            ecma: 5,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          output: {
+            ascii_only: true,
+            comments: false,
+            ecma: 5,
+          },
+        },
+      }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          parser: safePostCssParser,
+          map: false,
+        },
+        cssProcessorPluginOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: {
+                removeAll: true,
+              },
+              minifyFontValues: {
+                removeQuotes: false,
+              },
+            },
+          ],
+        },
+      }),
+    ],
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`,
+    },
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
