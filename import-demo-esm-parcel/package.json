@@ -8,11 +8,8 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "^2.7.8-esm",
+    "hyperformula": "^3.0.0-next1",
     "parcel": "^2.11.0"
-  },
-  "devDependencies": {
-    "@babel/core": "7.2.0"
   },
   "keywords": [],
   "@parcel/resolver-default": {
