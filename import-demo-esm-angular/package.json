@@ -1,0 +1,37 @@
+{
+  "name": "angular-import-test",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.1.0",
+    "@angular/common": "^18.1.0",
+    "@angular/compiler": "^18.1.0",
+    "@angular/core": "^18.1.0",
+    "@angular/forms": "^18.1.0",
+    "@angular/platform-browser": "^18.1.0",
+    "@angular/platform-browser-dynamic": "^18.1.0",
+    "@angular/router": "^18.1.0",
+    "hyperformula": "^3.0.0-next0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.1.0",
+    "@angular/cli": "^18.1.0",
+    "@angular/compiler-cli": "^18.1.0",
+    "@types/node": "^20.12.7",
+    "copyfiles": "^2.4.1",
+    "ts-node": "~10.9.0",
+    "typescript": "^5.4.5"
+  }
+}
