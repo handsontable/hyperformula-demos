@@ -7,10 +7,10 @@
   "main": "src/index.tsx",
   "dependencies": {
     "hyperformula": "3.0.x",
+    "milligram": "^1.4.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "^5.0.0",
-    "milligram": "^1.4.0"
+    "react-scripts": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

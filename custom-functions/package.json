@@ -3,21 +3,16 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
   "scripts": {
     "start": "parcel --no-source-maps index.html --open",
-    "test": "jest",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "3.0.x"
+    "hyperformula": "3.0.x",
+    "parcel": "^2.11.0"
   },
-  "devDependencies": {
-    "@babel/core": "^7.20.2",
-    "babel-jest": "^26.6.3",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "jest": "^29.3.1",
-    "parcel-bundler": "^1.6.1"
+  "@parcel/resolver-default": {
+    "packageExports": true
   },
   "keywords": []
 }
