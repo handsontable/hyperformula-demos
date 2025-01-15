@@ -4,15 +4,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel --no-source-maps index.html --open",
-    "build": "parcel build index.html"
+    "start": "vite --open"
   },
   "dependencies": {
     "hyperformula": "3.0.x",
-    "parcel": "^2.11.0"
-  },
-  "@parcel/resolver-default": {
-    "packageExports": true
+    "vite": "^6.0.7"
   },
   "keywords": []
 }
