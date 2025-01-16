@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HyperFormula Internationalization Demo</title>
+  <link
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
+  />
+  <link rel="stylesheet" href="./src/styles.css" />
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+<div class="example">
+  <table>
+    <colgroup>
+      <col style="width:33%" />
+      <col style="width:33%" />
+      <col style="width:33%" />
+    </colgroup>
+    <thead>
+    <tr>
+      <th>Representative</th>
+      <th>State</th>
+      <th>Income</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <form class="search-form" style="display: flex; flex-direction: column">
+    <div style="display: flex; align-items: baseline">
+      <label for="state">Find representative in</label>
+      <input type="text" name="state" value="Nevada" id="state" style="width: 110px">
+    </div>
+    <div style="display: flex; align-items: baseline">
+      <label for="formula">Formula</label>
+
+      <input type="text" name="formula" id="formula">
+    </div>
+    <div style="display: flex; align-items: baseline; margin: 30px 0 0 120px">
+      <button id="run">Run formula</button>
+      <p>Result:&nbsp <span id="result"></span></p>
+    </div>
+  </form>
+</div>
+
+<script src="src/index.js"></script>
+</body>
+</html>

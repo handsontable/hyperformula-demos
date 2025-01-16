@@ -1,0 +1,93 @@
+body {
+  font-family: sans-serif;
+  counter-reset: row-counter;
+  padding: 15px;
+}
+
+table tbody tr td:first-child {
+  text-align: center;
+  padding: 0;
+}
+
+table {
+  table-layout: fixed;
+  font-size: 14px;
+  margin-bottom: 2rem;
+}
+
+table thead tr th:first-child {
+  padding-left: 40px;
+}
+
+table tbody tr td:first-child span {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  padding-left: 15px;
+  margin-left: 0;
+}
+
+table tbody tr td:first-child span::before {
+  counter-increment: row-counter;
+  content: counter(row-counter);
+  display: inline-block;
+  width: 20px;
+  position: relative;
+  left: -10px;
+}
+
+table tbody tr td.updated-cell span {
+  animation-name: cell-appear;
+  animation-duration: 0.6s;
+}
+
+.search-form {
+  margin: 2rem auto;
+  max-width: 500px;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-form input {
+  margin-bottom: 1rem;
+}
+
+.search-form input:focus {
+  border-color: #7b96f1; // #1c49e4;
+}
+
+.search-form label {
+  margin-right: 1rem;
+  font-weight: 400;
+}
+
+.search-form p {
+  font-weight: 700;
+}
+
+.search-form button {
+  background-color: #1c49e4;
+  border-color: #1c49e4;
+  margin-right: 1rem;
+}
+
+.search-form button:hover {
+  background-color: #2350ea;
+}
+
+.search-form p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes cell-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
