@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "hyperformula": "3.0.0",
-    "moment": "2.26.0"
+    "moment": "^2.30.1"
   },
   "devDependencies": {
     "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
+    "parcel-bundler": "^1.12.5"
   },
   "keywords": []
 }
