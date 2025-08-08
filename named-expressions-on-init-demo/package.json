@@ -1,0 +1,20 @@
+{
+  "name": "hyperformula-named-expressions-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel --no-source-maps index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "hyperformula": "3.0.x",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}
