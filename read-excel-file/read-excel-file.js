@@ -14,24 +14,27 @@ async function readXlsxWorkbookFromFile(filename) {
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(filename);
   return workbook;
-} 
+}
 
 function convertXlsxWorkbookToJavascriptArrays(workbook) {
   const workbookData = {};
 
   workbook.eachSheet((worksheet) => {
+    const sheetDimensions = worksheet.dimensions
     const sheetData = [];
 
-    worksheet.eachRow((row) => {
+    for (let rowNum = sheetDimensions.top; rowNum <= sheetDimensions.bottom; rowNum++) {
       const rowData = [];
 
-      row.eachCell((cell) => {
+      for (let colNum = sheetDimensions.left; colNum <= sheetDimensions.right; colNum++) {
+        const cell = worksheet.getCell(rowNum, colNum)
+
         const cellData = cell.formula ? `=${cell.formula}` : cell.value;
         rowData.push(cellData);
-      });
+      }
 
       sheetData.push(rowData);
-    });
+    }
 
     workbookData[worksheet.name] = sheetData;
   })
