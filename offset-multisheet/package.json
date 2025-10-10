@@ -1,0 +1,14 @@
+{
+  "name": "hyperformula-offset-multisheet-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "vite --open"
+  },
+  "dependencies": {
+    "hyperformula": "^3.1.x",
+    "vite": "^6.0.7"
+  },
+  "keywords": []
+}

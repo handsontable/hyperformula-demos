@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HyperFormula OFFSET Multi-Sheet Demo</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="example">
+      <div class="buttons-row">
+        <button id="run" class="button run">
+          Run calculations
+        </button>
+        <button id="reset" class="button button-outline reset">
+          Reset
+        </button>
+      </div>
+
+      <div class="table-container">
+        <h2>Sheet 1: Revenue</h2>
+        <table class="table1">
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="table-container">
+        <h2>Sheet 2: Summary</h2>
+        <table class="table2">
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module" src="src/index.js"></script>
+  </body>
+</html>
