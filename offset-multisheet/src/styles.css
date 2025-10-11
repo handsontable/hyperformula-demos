@@ -1,30 +1,27 @@
 body {
   font-family: sans-serif;
-  padding: 15px;
+  padding: 8px;
+  margin: 0;
 }
 
 .example .buttons-row {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .example {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
   align-items: flex-start;
 }
 
 .example .table-container {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
 }
 
-.example .table-container h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
+.example .table-container h2 {
+  font-size: 2rem;
 }
 
 .example table {
@@ -33,21 +30,26 @@ body {
 
 .table1 {
   display: block;
-  max-height: 641px;
-  overflow-y: scroll;
+  padding-right: 20px;
 }
 
-.table1 thead,
-.table1 tbody {
+.table1 table thead,
+.table1 table tbody {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
 
+.example button {
+  padding: 6px 12px;
+  font-size: 13px;
+  height: auto;
+}
+
 .example button.run {
   background-color: #1c49e4;
   border-color: #1c49e4;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .example button.run:hover {
@@ -61,32 +63,37 @@ body {
 
 table {
   table-layout: fixed;
-  font-size: 14px;
-  margin-bottom: 30px;
+  font-size: 13px;
+  margin-bottom: 10px;
 }
 
 table tbody tr td:not(:first-child) {
   text-align: right;
-  padding-right: 20px;
+  padding-right: 12px;
 }
 
 table tbody tr td,
 table tbody tr th {
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 53px;
+  min-height: 32px;
+  padding: 8px 10px;
 }
 
 table tbody tr td span {
   display: inline-block;
 }
 
-table.table1 tbody tr td:first-child, table.table1 tbody tr:first-child {
+.table1 table tbody tr td:first-child, .table1 table tbody tr:first-child {
   text-align: left;
-  padding-left: 15px;
+  padding-left: 10px;
   font-weight: 600;
   background-color: #f4f5f6;
   color: #333;
+}
+
+.table2 {
+  padding-left: 20px;
 }
 
 table tbody tr td.updated-cell span {

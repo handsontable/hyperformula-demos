@@ -56,7 +56,7 @@ function renderTableFromSheet(tableSelector, sheetId, calculated = false, maxRow
  */
 export function renderTables(calculated = false) {
   renderTableFromSheet('.table1', revenueSheetId, calculated);
-  renderTableFromSheet('.table2', summarySheetId, calculated, 2);
+  renderTableFromSheet('.table2', summarySheetId, calculated);
 }
 
 /**

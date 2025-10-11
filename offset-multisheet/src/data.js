@@ -21,6 +21,5 @@ export const revenueData = [
  * Initial table data for Summary sheet
  */
 export const summaryData = [
-  ['', ''],
   ['Revenue from region 2 in month 9', '=OFFSET(Revenue!A1, 9, 2)'],
 ];
