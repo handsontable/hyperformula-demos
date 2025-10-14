@@ -63,7 +63,7 @@ MyCustomPlugin.implementedFunctions = {
   },
   DOUBLE_RANGE: {
     method: 'doubleRange',
-    arraySizeMethod: 'doubleRangeResultArraySize',
+    sizeOfResultArrayMethod: 'doubleRangeResultArraySize',
     parameters: [
       { argumentType: FunctionArgumentType.RANGE },
     ],
