@@ -7,7 +7,7 @@
     "start": "vite --open"
   },
   "dependencies": {
-    "hyperformula": "3.1.x",
+    "hyperformula": "3.2.x",
     "vite": "^6.0.7"
   },
   "keywords": []
