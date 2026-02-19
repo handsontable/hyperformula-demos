@@ -1,36 +1,89 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HyperFormula IRR Function Demo</title>
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/milligram@1.4.1/dist/milligram.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyperformula Investment Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.10.5"></script>
     <link rel="stylesheet" href="./src/styles.css" />
     <meta charset="UTF-8" />
   </head>
 
   <body>
-    <div class="example">
-      <button id="run" class="button run">Run calculations</button>
-      <button id="reset" class="button button-outline reset">Reset</button>
-      <table>
-        <colgroup>
-          <col />
-          <col style="width: 150px" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Cash Flow ($)</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <div>
+      <h1>Investment Calculator</h1>
+
+      <div id="calc">
+        <section id="input">
+          <h2>Investment Input</h2>
+          <form>
+            <fieldset>
+              <label>Initial investment</label>
+              <input id="initial" value="-70000" />
+            </fieldset>
+
+            <div>
+              <fieldset>
+                <label>Year 1</label>
+                <input id="y1" value="12000" />
+              </fieldset>
+              <fieldset>
+                <label>Year 2</label>
+                <input id="y2" value="15000" />
+              </fieldset>
+              <fieldset>
+                <label>Year 3</label>
+                <input id="y3" value="18000" />
+              </fieldset>
+              <fieldset>
+                <label>Year 4</label>
+                <input id="y4" value="21000" />
+              </fieldset>
+              <fieldset>
+                <label>Year 5</label>
+                <input id="y5" value="26000" />
+              </fieldset>
+            </div>
+
+            <fieldset>
+              <label>Discount rate</label>
+              <input id="discount" value="10" />
+            </fieldset>
+            <fieldset>
+              <button>Run Calculation</button>
+            </fieldset>
+          </form>
+        </section>
+        <section id="result">
+          <h2>Results</h2>
+          <div class="Cards">
+            <div class="Card" data-title="=IRR(B1:B4)">
+              <h3>IRR (3 Years)</h3>
+              <input id="resullt3y" placeholder="=IRR(B1:B4)" disabled />
+            </div>
+            <div class="Card" data-title="=IRR(B1:B4)">
+              <h3>IRR (5 Years)</h3>
+              <input id="resullt5y" placeholder="=IRR(B1:B4)" disabled />
+            </div>
+            <div class="Card" data-title="MATCH(TRUE,C1:C5>=0,0)">
+              <h3>Payback Period</h3>
+              <input
+                id="payback"
+                disabled
+                placeholder="=MATCH(TRUE,C1:C5>=0,0)
+              "
+              />
+            </div>
+            <div class="Card" data-title="=NPV(B7,B1:B5)+B6">
+              <h3>Net Present Value</h3>
+              <input id="" placeholder="=NPV(B7,B1:B5)+B6" disabled />
+            </div>
+          </div>
+          <div id="summary">
+            <div class="Good hide">Good investment</div>
+            <div class="Bad hide">Bad investment</div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script type="module" src="src/index.js"></script>

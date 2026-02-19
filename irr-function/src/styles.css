@@ -1,69 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  border: none;
+}
 body {
-  font-family: sans-serif;
-  padding: 15px;
-}
+  background: #f6f6f6;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 
-.example button.run {
-  background-color: #1c49e4;
-  border-color: #1c49e4;
-  margin-right: 8px;
-  margin-bottom: 20px;
-}
-
-.example button.run:hover {
-  background-color: #2350ea;
-}
-
-.example button.reset {
-  border-color: #1c49e4;
-  color: #1c49e4;
-  margin-bottom: 20px;
-}
-
-table {
-  table-layout: fixed;
-  font-size: 13px;
-}
-
-table tbody tr td,
-table tbody tr th {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 12px 10px;
-}
-
-table tbody tr td:not(:first-child) {
-  text-align: right;
-  padding-right: 12px;
-}
-
-table tbody tr td span {
-  display: inline-block;
-}
-
-table tbody tr td input[type="number"] {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 0 8px;
-  font-size: 13px;
-  text-align: right;
-  box-sizing: border-box;
-  margin: -1px 0;
-  height: 100%;
-  line-height: inherit;
-}
-
-table tbody tr td.updated-cell span {
-  animation-name: cell-appear;
-  animation-duration: 0.6s;
-}
-
-@keyframes cell-appear {
-  from {
-    opacity: 0;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
   }
-  to {
-    opacity: 1;
+}
+
+body > div {
+  margin: 40px auto;
+  width: 640px;
+
+  h1,
+  h2 {
+    font-size: 20px;
+    line-height: 32px;
   }
+  h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 8px;
+    opacity: 0.7;
+  }
+
+  #calc {
+    padding-top: 24px;
+    display: flex;
+    gap: 16px;
+
+    section {
+      width: 50%;
+      background-color: white;
+      border-radius: 16px;
+
+      h2 {
+        padding: 16px;
+        border-bottom: 1px solid #eee;
+      }
+    }
+    #result {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0;
+
+      h2 {
+        border-bottom: 0px;
+      }
+      .Cards {
+        padding: 0 8px 8px;
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+
+        .Card {
+          border: 1px solid #eee;
+          border-radius: 8px;
+          padding: 16px;
+          position: relative;
+
+          h3 {
+            font-size: 12px;
+          }
+          input {
+            background: transparent;
+            font-size: 16px;
+            line-height: 32px;
+            padding: 0;
+            display: block;
+            width: 100%;
+            text-align: left;
+          }
+        }
+        .Card:hover::after {
+          visibility: visible;
+          opacity: 1;
+        }
+        .Card::after {
+          opacity: 0;
+          visibility: hidden;
+          display: inline-block;
+          content: attr(data-title);
+          color: #fff;
+          background: black;
+          padding: 4px 8px;
+          font-size: 12px;
+          border-radius: 8px;
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          transition: 0.2s all ease-in-out;
+        }
+      }
+      #summary {
+        padding: 8px;
+        margin-bottom: 0;
+        flex: 1;
+        display: flex;
+
+        > div {
+          border-radius: 8px;
+          padding: 8px 16px;
+          text-align: center;
+          margin-bottom: 0;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+        }
+
+        .Good {
+          border: 1px solid #bbf7d0;
+          background: #f0fdf4;
+          color: #14532d;
+        }
+        .Bad {
+          border: 1px solid #fecaca;
+          color: #7f1d1d;
+          background: #fef2f2;
+        }
+      }
+    }
+  }
+}
+
+form fieldset {
+  padding: 8px 8px;
+  display: flex;
+  gap: 8px;
+
+  label {
+    display: block;
+    width: 65%;
+    padding: 0 8px;
+    line-height: 28px;
+  }
+
+  button {
+    padding: 8px 8px;
+    background-color: #06f;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      background: #04f;
+    }
+  }
+}
+form > div {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  fieldset {
+    padding: 4px 8px;
+  }
+}
+input {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: #f6f6f6;
+  border: none;
+  line-height: 20px;
+  text-align: right;
+  width: 35%;
+}
+
+.hide {
+  display: none !important;
 }
