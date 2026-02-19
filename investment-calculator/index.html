@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hyperformula Investment Calculator</title>
+    <title>HyperFormula Investment Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.10.5"></script>
     <link rel="stylesheet" href="./src/styles.css" />
     <meta charset="UTF-8" />
@@ -56,31 +56,26 @@
         <section id="result">
           <h2>Results</h2>
           <div class="Cards">
-            <div class="Card" data-title="=IRR(B1:B4)">
+            <div class="Card" data-title="=IRR(A1:A4)">
               <h3>IRR (3 Years)</h3>
-              <input id="resullt3y" placeholder="=IRR(B1:B4)" disabled />
+              <input id="resullt3y" placeholder="=IRR(A1:A4)" disabled />
             </div>
-            <div class="Card" data-title="=IRR(B1:B4)">
+            <div class="Card" data-title="=IRR(A1:A6)">
               <h3>IRR (5 Years)</h3>
-              <input id="resullt5y" placeholder="=IRR(B1:B4)" disabled />
+              <input id="resullt5y" placeholder="=IRR(A1:A6)" disabled />
             </div>
-            <div class="Card" data-title="MATCH(TRUE,C1:C5>=0,0)">
+            <div class="Card" data-title="=NPV(A7,A2:A6)+A1">
+              <h3>Net Present Value</h3>
+              <input id="npv" placeholder="=NPV(A7,A2:A6)+A1" disabled />
+            </div>
+            <div class="Card" data-title='=COUNTIF(B1:B6,"<0")'>
               <h3>Payback Period</h3>
               <input
                 id="payback"
                 disabled
-                placeholder="=MATCH(TRUE,C1:C5>=0,0)
-              "
+                placeholder='=COUNTIF(B1:B6,"<0")'
               />
             </div>
-            <div class="Card" data-title="=NPV(B7,B1:B5)+B6">
-              <h3>Net Present Value</h3>
-              <input id="" placeholder="=NPV(B7,B1:B5)+B6" disabled />
-            </div>
-          </div>
-          <div id="summary">
-            <div class="Good hide">Good investment</div>
-            <div class="Bad hide">Bad investment</div>
           </div>
         </section>
       </div>
