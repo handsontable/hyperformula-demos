@@ -10,6 +10,7 @@ const INITIAL_ITEMS: Item[] = [
 ];
 
 const TAX_RATE = 0.1;
+const SHEET_ID = 0;
 
 /**
  * Build the 2D array HyperFormula will evaluate.
@@ -41,7 +42,7 @@ export default function App() {
     hfRef.current = HyperFormula.buildFromArray(buildSheetData(INITIAL_ITEMS), {
       licenseKey: 'gpl-v3',
     });
-    setCalculated(hfRef.current.getSheetValues(0) as (string | number)[][]);
+    setCalculated(hfRef.current.getSheetValues(SHEET_ID) as (string | number)[][]);
 
     return () => hfRef.current?.destroy();
   }, []);
@@ -58,10 +59,10 @@ export default function App() {
 
     const cellColumn = column === 'qty' ? 1 : 2;
     hfRef.current.setCellContents(
-      { sheet: 0, row: rowIndex, col: cellColumn },
+      { sheet: SHEET_ID, row: rowIndex, col: cellColumn },
       numericValue
     );
-    setCalculated(hfRef.current.getSheetValues(0) as (string | number)[][]);
+    setCalculated(hfRef.current.getSheetValues(SHEET_ID) as (string | number)[][]);
   };
 
   return (

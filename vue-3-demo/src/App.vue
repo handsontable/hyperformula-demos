@@ -15,6 +15,7 @@ const INITIAL_ITEMS: InvoiceItem[] = [
 ]
 
 const TAX_RATE = 0.1
+const SHEET_ID = 0
 
 /**
  * Build the 2D array HyperFormula will evaluate.
@@ -42,15 +43,15 @@ const hf = markRaw(
 )
 
 const calculated = ref<(string | number)[][]>(
-  hf.getSheetValues(0) as (string | number)[][]
+  hf.getSheetValues(SHEET_ID) as (string | number)[][]
 )
 
 const updateCell = (rowIndex: number, column: 'qty' | 'price', value: number) => {
   if (Number.isNaN(value)) return
   items[rowIndex][column] = value
   const cellColumn = column === 'qty' ? 1 : 2
-  hf.setCellContents({ sheet: 0, row: rowIndex, col: cellColumn }, value)
-  calculated.value = hf.getSheetValues(0) as (string | number)[][]
+  hf.setCellContents({ sheet: SHEET_ID, row: rowIndex, col: cellColumn }, value)
+  calculated.value = hf.getSheetValues(SHEET_ID) as (string | number)[][]
 }
 
 const formatMoney = (value: string | number | undefined): string =>
@@ -109,31 +110,18 @@ main {
   max-width: 640px;
   margin: 20px auto;
   padding: 0 20px;
-  font-family: sans-serif;
 }
 
 table {
   width: 100%;
   margin-top: 20px;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-}
-
-th {
-  background: #f5f5f5;
 }
 
 input[type='number'] {
   width: 100%;
+  margin-bottom: 0;
   padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  height: auto;
 }
 
 tr.summary td {
@@ -147,6 +135,5 @@ tr.summary td:first-child {
 
 tbody tr:last-child td {
   border-top: 2px solid #606c76;
-  border-bottom: none;
 }
 </style>

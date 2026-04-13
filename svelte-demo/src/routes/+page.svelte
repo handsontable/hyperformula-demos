@@ -7,6 +7,7 @@
    */
 
   const TAX_RATE = 0.1;
+  const SHEET_ID = 0;
 
   /** @type {InvoiceItem[]} */
   let items = [
@@ -40,7 +41,7 @@
   });
 
   /** @type {(string | number)[][]} */
-  let calculated = /** @type {(string | number)[][]} */ (hf.getSheetValues(0));
+  let calculated = /** @type {(string | number)[][]} */ (hf.getSheetValues(SHEET_ID));
 
   /**
    * @param {number} rowIndex
@@ -51,8 +52,8 @@
     if (Number.isNaN(value)) return;
     const cellColumn = column === 'qty' ? 1 : 2;
     items[rowIndex][column] = value;
-    hf.setCellContents({ sheet: 0, row: rowIndex, col: cellColumn }, value);
-    calculated = /** @type {(string | number)[][]} */ (hf.getSheetValues(0));
+    hf.setCellContents({ sheet: SHEET_ID, row: rowIndex, col: cellColumn }, value);
+    calculated = /** @type {(string | number)[][]} */ (hf.getSheetValues(SHEET_ID));
   };
 
   /** @param {string | number | undefined} value */
@@ -114,31 +115,18 @@
     max-width: 640px;
     margin: 20px auto;
     padding: 0 20px;
-    font-family: sans-serif;
   }
 
   table {
     width: 100%;
     margin-top: 20px;
-    border-collapse: collapse;
-  }
-
-  th,
-  td {
-    padding: 8px 12px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: left;
-  }
-
-  th {
-    background: #f5f5f5;
   }
 
   input[type='number'] {
     width: 100%;
+    margin-bottom: 0;
     padding: 4px 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    height: auto;
   }
 
   tr.summary td {
@@ -152,6 +140,5 @@
 
   tbody tr:last-child td {
     border-top: 2px solid #606c76;
-    border-bottom: none;
   }
 </style>
