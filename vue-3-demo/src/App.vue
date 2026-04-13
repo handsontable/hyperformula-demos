@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { markRaw, reactive, ref } from 'vue'
+import { markRaw, onUnmounted, reactive, ref } from 'vue'
 import { HyperFormula } from 'hyperformula'
 
 interface InvoiceItem {
@@ -46,6 +46,7 @@ const calculated = ref<(string | number)[][]>(
 )
 
 const updateCell = (rowIndex: number, column: 'qty' | 'price', value: number) => {
+  if (Number.isNaN(value)) return
   items[rowIndex][column] = value
   const cellColumn = column === 'qty' ? 1 : 2
   hf.setCellContents({ sheet: 0, row: rowIndex, col: cellColumn }, value)
@@ -54,6 +55,8 @@ const updateCell = (rowIndex: number, column: 'qty' | 'price', value: number) =>
 
 const formatMoney = (value: string | number | undefined): string =>
   typeof value === 'number' ? `$${value.toFixed(2)}` : String(value ?? '')
+
+onUnmounted(() => hf.destroy())
 </script>
 
 <template>

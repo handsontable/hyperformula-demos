@@ -18,14 +18,16 @@ export class AppComponent {
     this.calculated$ = invoice.getCalculated();
   }
 
-  updateQty(rowIndex: number, value: string): void {
-    const parsed = Number(value);
-    if (!Number.isNaN(parsed)) this.invoice.updateCell(rowIndex, 'qty', parsed);
+  updateQty(rowIndex: number, value: number | null): void {
+    if (value !== null && !Number.isNaN(value)) {
+      this.invoice.updateCell(rowIndex, 'qty', value);
+    }
   }
 
-  updatePrice(rowIndex: number, value: string): void {
-    const parsed = Number(value);
-    if (!Number.isNaN(parsed)) this.invoice.updateCell(rowIndex, 'price', parsed);
+  updatePrice(rowIndex: number, value: number | null): void {
+    if (value !== null && !Number.isNaN(value)) {
+      this.invoice.updateCell(rowIndex, 'price', value);
+    }
   }
 
   formatMoney(value: string | number | undefined): string {

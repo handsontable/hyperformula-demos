@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from 'svelte';
   import { HyperFormula } from 'hyperformula';
 
   /**
@@ -47,6 +48,7 @@
    * @param {number} value
    */
   const updateCell = (rowIndex, column, value) => {
+    if (Number.isNaN(value)) return;
     const cellColumn = column === 'qty' ? 1 : 2;
     items[rowIndex][column] = value;
     hf.setCellContents({ sheet: 0, row: rowIndex, col: cellColumn }, value);
@@ -56,6 +58,8 @@
   /** @param {string | number | undefined} value */
   const formatMoney = (value) =>
     typeof value === 'number' ? `$${value.toFixed(2)}` : String(value ?? '');
+
+  onDestroy(() => hf.destroy());
 </script>
 
 <main>
