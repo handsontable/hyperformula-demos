@@ -1,38 +1,149 @@
 <script setup lang="ts">
-import 'milligram'
-import { ref, type Ref } from 'vue'
-import { EmployeesDataProvider } from './lib/employees-data-provider'
-import ActionButton from './components/ActionButton.vue'
-import HfTable from './components/HfTable.vue'
+import { markRaw, reactive, ref } from 'vue'
+import { HyperFormula } from 'hyperformula'
 
-const employeesDataProvider = new EmployeesDataProvider()
-let data: Ref<(string | number)[][]> = ref([])
-let totals: Ref<(string | number)[]> = ref([])
-reset()
-
-function runCalculations() {
-  data.value = employeesDataProvider.getTabularData({ calculated: true })
-  totals.value = employeesDataProvider.getTotals({ calculated: true })
+interface InvoiceItem {
+  name: string
+  qty: number
+  price: number
 }
 
-function reset() {
-  data.value = employeesDataProvider.getTabularData({ calculated: false })
-  totals.value = employeesDataProvider.getTotals({ calculated: false })
+const INITIAL_ITEMS: InvoiceItem[] = [
+  { name: 'Widget A', qty: 2, price: 19.99 },
+  { name: 'Widget B', qty: 1, price: 49.99 },
+  { name: 'Widget C', qty: 3, price: 9.99 },
+]
+
+const TAX_RATE = 0.1
+
+/**
+ * Build the 2D array HyperFormula will evaluate.
+ * Rows 0..n-1: item rows with subtotal formulas.
+ * Last three rows: subtotal, tax, and total summary rows.
+ */
+const buildSheetData = (items: InvoiceItem[]): (string | number)[][] => [
+  ...items.map((item, index) => [
+    item.name,
+    item.qty,
+    item.price,
+    `=B${index + 1}*C${index + 1}`,
+  ]),
+  ['Subtotal', '', '', `=SUM(D1:D${items.length})`],
+  ['Tax', '', '', `=D${items.length + 1}*${TAX_RATE}`],
+  ['Total', '', '', `=D${items.length + 1}+D${items.length + 2}`],
+]
+
+const items = reactive<InvoiceItem[]>([...INITIAL_ITEMS])
+
+// markRaw prevents Vue from wrapping the HyperFormula instance in a reactive proxy,
+// which would interfere with its internal state and trigger runtime errors.
+const hf = markRaw(
+  HyperFormula.buildFromArray(buildSheetData(items), { licenseKey: 'gpl-v3' })
+)
+
+const calculated = ref<(string | number)[][]>(
+  hf.getSheetValues(0) as (string | number)[][]
+)
+
+const updateCell = (rowIndex: number, column: 'qty' | 'price', value: number) => {
+  items[rowIndex][column] = value
+  const cellColumn = column === 'qty' ? 1 : 2
+  hf.setCellContents({ sheet: 0, row: rowIndex, col: cellColumn }, value)
+  calculated.value = hf.getSheetValues(0) as (string | number)[][]
 }
+
+const formatMoney = (value: string | number | undefined): string =>
+  typeof value === 'number' ? `$${value.toFixed(2)}` : String(value ?? '')
 </script>
 
 <template>
   <main>
-    <ActionButton text="Run calculations" @button-click="runCalculations" />
-    <ActionButton text="Reset" outline @button-click="reset" />
-    <HfTable :data="data" :totals="totals" />
+    <h2>Invoice Calculator</h2>
+    <p>Edit quantity or price — HyperFormula recalculates subtotals, tax, and total.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in items" :key="item.name">
+          <td>{{ item.name }}</td>
+          <td>
+            <input
+              type="number"
+              min="0"
+              :value="item.qty"
+              @input="updateCell(index, 'qty', Number(($event.target as HTMLInputElement).value))"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              min="0"
+              step="0.01"
+              :value="item.price"
+              @input="updateCell(index, 'price', Number(($event.target as HTMLInputElement).value))"
+            />
+          </td>
+          <td>{{ formatMoney(calculated[index]?.[3]) }}</td>
+        </tr>
+        <tr v-for="row in calculated.slice(items.length)" :key="String(row[0])" class="summary">
+          <td colspan="3">{{ row[0] }}</td>
+          <td>{{ formatMoney(row[3]) }}</td>
+        </tr>
+      </tbody>
+    </table>
   </main>
 </template>
 
 <style scoped>
-body {
+main {
+  max-width: 640px;
+  margin: 20px auto;
+  padding: 0 20px;
   font-family: sans-serif;
-  counter-reset: row-counter;
-  padding: 15px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+th {
+  background: #f5f5f5;
+}
+
+input[type='number'] {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+tr.summary td {
+  font-weight: 600;
+}
+
+tr.summary td:first-child {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+tbody tr:last-child td {
+  border-top: 2px solid #606c76;
+  border-bottom: none;
 }
 </style>

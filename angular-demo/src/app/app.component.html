@@ -1,2 +1,37 @@
-<hf-actions></hf-actions>
-<hf-table></hf-table>
+<main class="container">
+  <h2>Invoice Calculator</h2>
+  <p>Edit quantity or price — HyperFormula recalculates subtotals, tax, and total.</p>
+
+  <ng-container *ngIf="calculated$ | async as rows">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rowIndex of itemIndices">
+          <td>{{ rows[rowIndex][0] }}</td>
+          <td>
+            <input type="number" min="0"
+                   [ngModel]="rows[rowIndex][1]"
+                   (ngModelChange)="updateQty(rowIndex, $event)" />
+          </td>
+          <td>
+            <input type="number" min="0" step="0.01"
+                   [ngModel]="rows[rowIndex][2]"
+                   (ngModelChange)="updatePrice(rowIndex, $event)" />
+          </td>
+          <td>{{ formatMoney(rows[rowIndex][3]) }}</td>
+        </tr>
+        <tr *ngFor="let row of rows.slice(itemIndices.length)" class="summary">
+          <td colspan="3">{{ row[0] }}</td>
+          <td>{{ formatMoney(row[3]) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</main>

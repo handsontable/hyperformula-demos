@@ -1,7 +1,11 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
 .container {
   max-width: 640px;
-  margin: 20px auto;
-  padding: 0 20px;
+  margin: 0 auto;
 }
 
 table {
@@ -11,9 +15,9 @@ table {
 
 input[type='number'] {
   width: 100%;
+  margin-bottom: 0;
   padding: 4px 8px;
   height: auto;
-  margin-bottom: 0;
 }
 
 tr.summary td {
