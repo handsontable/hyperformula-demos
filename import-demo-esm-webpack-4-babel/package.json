@@ -42,7 +42,7 @@
     "@babel/runtime": "^7.9.2",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.3",
-    "hyperformula": "3.2.x"
+    "hyperformula": "3.3.0"
   },
   "browserslist": [
     ">0.2%",

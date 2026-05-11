@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "hyperformula": "3.2.x",
+    "hyperformula": "3.3.0",
     "parcel": "^2.11.0"
   },
   "keywords": [],

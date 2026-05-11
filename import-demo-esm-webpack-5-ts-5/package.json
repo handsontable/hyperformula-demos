@@ -16,6 +16,6 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "hyperformula": "3.2.x"
+    "hyperformula": "3.3.0"
   }
 }
