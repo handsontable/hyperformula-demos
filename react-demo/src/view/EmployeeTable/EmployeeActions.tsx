@@ -3,9 +3,7 @@ import { useEmployeesContext } from "../../lib/employee";
 
 import "./EmployeeActions.scss";
 
-export type EmployeeActionsProps = {};
-
-export const EmployeeActions: FC<EmployeeActionsProps> = () => {
+export const EmployeeActions: FC = () => {
   const { runCalculations, resetCalculations } = useEmployeesContext();
 
   return (
