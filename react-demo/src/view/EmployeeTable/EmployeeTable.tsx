@@ -1,4 +1,4 @@
-import * as React from "react";
+import { FC, useContext } from "react";
 import { Table } from "../../components/Table";
 import { EmployeesContext } from "../../lib/employee";
 
@@ -6,11 +6,11 @@ import "./EmployeeTable.scss";
 
 export type EmployeeTableProps = {};
 
-export const EmployeeTable: React.FC<EmployeeTableProps> = () => {
+export const EmployeeTable: FC<EmployeeTableProps> = () => {
   const {
     employees,
     totals,
-  } = React.useContext(EmployeesContext)
+  } = useContext(EmployeesContext)
 
   return (
     <Table colgroupWidths={[22, 15, 23, 20, 20]}>
