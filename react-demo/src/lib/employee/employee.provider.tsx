@@ -7,7 +7,6 @@ import {
 } from "react";
 import HyperFormula from "hyperformula";
 import { EmployeesContext } from "./employee.context";
-import { isNumber } from "./employee.utils";
 import {
   initializeHF,
   initializeNamedExpressions,
@@ -43,13 +42,10 @@ export const EmployeesStateProvider = ({
     const formatted = formatCellValues(calculated);
     setEmployees(formatted);
     setTotals(
-      TOTAL_EXPRESSIONS.map(expression => {
-        const calculatedValue = hf.calculateFormula(expression, sheetId);
-        if (!isNumber(calculatedValue))
-          throw new Error("Calculated value is not a number");
-
-        return calculatedValue.toFixed(2);
-      }),
+      TOTAL_EXPRESSIONS.map(
+        expression =>
+          hf.calculateFormula(expression, sheetId)?.toString() ?? "",
+      ),
     );
   }, []);
 
