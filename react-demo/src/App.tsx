@@ -1,4 +1,3 @@
-import * as React from "react";
 import "milligram";
 
 import "./view/App/App.scss";
