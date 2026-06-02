@@ -1,4 +1,3 @@
 {
-    "node": "16",
-    "template": "node"
+    "template": "vite-react-ts"
 }
