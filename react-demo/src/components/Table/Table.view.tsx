@@ -1,14 +1,14 @@
-import * as React from "react";
+import { FC, ReactNode } from "react";
 import { HeadView } from "./Head.view";
 import { RowView } from "./Row.view";
 import { CellView } from "./Cell.view";
 
 export type TableProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   colgroupWidths?: number[];
 };
 
-export const TableView: React.FC<TableProps> & {
+export const TableView: FC<TableProps> & {
   Head: typeof HeadView;
   Row: typeof RowView;
   Cell: typeof CellView;
