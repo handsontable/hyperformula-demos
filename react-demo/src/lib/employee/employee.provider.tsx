@@ -1,85 +1,88 @@
-import React, { useState } from "react";
-import HyperFormula from 'hyperformula';
+import {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import HyperFormula from "hyperformula";
 import { EmployeesContext } from "./employee.context";
+import { isNumber } from "./employee.utils";
 import {
   initializeHF,
   initializeNamedExpressions,
-  initHFValues
+  initHFValues,
+  formatCellValues,
 } from "./employee.hf";
-import { EmployeeRow } from "./types";
+import { EmployeeOutputRow } from "./types";
 
 /** input data */
 import { tableData } from "./fixtures/data";
 
-export type EmployeesProviderProps = React.PropsWithChildren<{}>;
+type EmployeesProviderProps = PropsWithChildren<{}>;
 
 const TOTAL_EXPRESSIONS = ["=SUM(Year_1)", "=SUM(Year_2)"];
 const EMPLOYEE_SHEET_ID = "employeeSheet";
 
 export const EmployeesStateProvider = ({
-  children
+  children,
 }: EmployeesProviderProps) => {
-  const hfReference = React.useRef<{
+  const hfReference = useRef<{
     hf: HyperFormula;
     sheetId: number;
     sheetName: string;
-  }>();
-  const [withCalculations, setWithCalculations] = useState<boolean>();
-  const [employees, setEmployees] = useState<EmployeeRow[]>([]);
-  const [totals, setTotals] = useState<React.ReactText[]>([]);
+  }>(null);
+  const [employees, setEmployees] = useState<EmployeeOutputRow[]>([]);
+  const [totals, setTotals] = useState<string[]>([]);
 
-  const setCalculationsFlag = (calculationsFlag: boolean) => {
-    setWithCalculations(calculationsFlag);
-  };
+  const runCalculations = useCallback(() => {
+    if (!hfReference.current) return;
+
+    const { hf, sheetId } = hfReference.current;
+    const calculatedValues = hf.getSheetValues(sheetId);
+    setEmployees(formatCellValues(calculatedValues));
+    setTotals(
+      TOTAL_EXPRESSIONS.map(expression => {
+        const calculatedValue = hf.calculateFormula(expression, sheetId);
+        if (!isNumber(calculatedValue))
+          throw new Error("Calculated value is not a number");
+
+        return calculatedValue.toFixed(2);
+      }),
+    );
+  }, []);
+
+  const resetCalculations = useCallback(() => {
+    if (!hfReference.current) return;
+
+    const { hf, sheetId } = hfReference.current;
+    setEmployees(formatCellValues(hf.getSheetSerialized(sheetId)));
+    setTotals(TOTAL_EXPRESSIONS);
+  }, []);
 
   /** INITIALIZE */
-  React.useEffect(() => {
+  useEffect(() => {
     const { hf, sheetId, sheetName } = initializeHF(EMPLOYEE_SHEET_ID);
-    hfReference.current = { hf, sheetId: sheetId as number, sheetName };
+    hfReference.current = { hf, sheetId, sheetName };
 
     // Fill the HyperFormula sheet with data.
-    initHFValues(hf, sheetId as number, tableData);
+    initHFValues(hf, sheetId, tableData);
 
     // Add named expressions
     initializeNamedExpressions(hf, sheetName);
-  }, []);
 
-  React.useEffect(() => {
-    if (!hfReference.current) {
-      return;
-    }
-
-    const { hf, sheetId } = hfReference.current;
-
-    if (withCalculations) {
-      const calculatedValues = hf.getSheetValues(sheetId) as number[][];
-      // format the display of numbers
-      const formmatedValues = calculatedValues.map((row: number[]) => {
-        return row.map((cell: number) => {
-          if (!isNaN(cell)) return cell.toFixed(2);
-          return cell;
-        });
-      });
-      setEmployees(formmatedValues as EmployeeRow[]);
-      setTotals(
-        TOTAL_EXPRESSIONS.map(expression =>
-          (hf.calculateFormula(expression, sheetId) as number).toFixed(2)
-        )
-      );
-    } else {
-      setEmployees(hf.getSheetSerialized(sheetId) as EmployeeRow[]);
-      setTotals(TOTAL_EXPRESSIONS);
-    }
-  }, [hfReference, withCalculations]);
+    // Initialize the state
+    resetCalculations();
+  }, [resetCalculations]);
 
   return (
     <EmployeesContext.Provider
       value={{
         employees,
         totals,
-        setCalculationsFlag
-      }}
-    >
+        runCalculations,
+        resetCalculations,
+      }}>
       {children}
     </EmployeesContext.Provider>
   );

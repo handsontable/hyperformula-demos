@@ -1,14 +1,24 @@
-import { createContext } from "react";
-import { EmployeeRow } from "./types";
+import { createContext, useContext } from "react";
+import { EmployeeOutputRow } from "./types";
 
 export type EmployeesContextProps = {
-  employees: EmployeeRow[];
-  totals: React.ReactText[];
-  setCalculationsFlag: (calculationsFlag: boolean) => void;
+  employees: EmployeeOutputRow[];
+  totals: string[];
+  runCalculations: () => void;
+  resetCalculations: () => void;
 };
 
-export const EmployeesContext = createContext<EmployeesContextProps>({
-  employees: [],
-  totals: [],
-  setCalculationsFlag: () => null
-});
+export const EmployeesContext = createContext<EmployeesContextProps | null>(
+  null,
+);
+
+export const useEmployeesContext = () => {
+  const ctx = useContext(EmployeesContext);
+
+  if (!ctx)
+    throw new Error(
+      "useEmployeesContext must be used within a EmployeesStateProvider",
+    );
+
+  return ctx;
+};

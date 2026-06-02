@@ -1,9 +1,17 @@
 type FormulaType = string;
 
-export type EmployeeRow = [
+export type EmployeeInputRow = [
   string,
   number,
   FormulaType,
   FormulaType,
-  FormulaType
+  FormulaType,
+];
+
+export type EmployeeOutputRow = [
+  string,
+  string, // formatted number
+  FormulaType,
+  FormulaType,
+  FormulaType,
 ];
