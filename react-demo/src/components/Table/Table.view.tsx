@@ -17,7 +17,7 @@ export const TableView: FC<TableProps> & {
     <table>
       <colgroup>
         {colgroupWidths?.map((width, idx) => (
-          <col key={idx} style={{ width: `${width}%`}} />
+          <col key={idx} style={{ width: `${width}%` }} />
         ))}
       </colgroup>
       {children}

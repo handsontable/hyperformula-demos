@@ -42,7 +42,7 @@ export const EmployeesStateProvider = ({
     const calculatedValues = hf.getSheetValues(sheetId);
     setEmployees(formatCellValues(calculatedValues));
     setTotals(
-      TOTAL_EXPRESSIONS.map(expression => {
+      TOTAL_EXPRESSIONS.map((expression) => {
         const calculatedValue = hf.calculateFormula(expression, sheetId);
         if (!isNumber(calculatedValue))
           throw new Error("Calculated value is not a number");
@@ -82,7 +82,8 @@ export const EmployeesStateProvider = ({
         totals,
         runCalculations,
         resetCalculations,
-      }}>
+      }}
+    >
       {children}
     </EmployeesContext.Provider>
   );

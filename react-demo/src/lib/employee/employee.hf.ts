@@ -58,7 +58,7 @@ export const initHFValues = (
 };
 
 export const formatCellValues = (values: (CellValue | RawCellContent)[][]) => {
-  return values.map(value => {
+  return values.map((value) => {
     if (isNumber(value)) return value.toFixed(2);
     return value;
   }) as EmployeeOutputRow[];
