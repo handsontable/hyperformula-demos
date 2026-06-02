@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import { EmployeeOutputRow } from "./types";
+import { EmployeeRow } from "./types";
 
 export type EmployeesContextProps = {
-  employees: EmployeeOutputRow[];
+  employees: EmployeeRow[];
   totals: string[];
   runCalculations: () => void;
   resetCalculations: () => void;

@@ -1,6 +1,5 @@
 import HyperFormula, { CellValue, RawCellContent } from "hyperformula";
-import { isNumber } from "./employee.utils";
-import { EmployeeOutputRow } from "./types";
+import { EmployeeRow } from "./types";
 
 console.log(
   `%c Using HyperFormula ${HyperFormula.version}`,
@@ -58,8 +57,7 @@ export const initHFValues = (
 };
 
 export const formatCellValues = (values: (CellValue | RawCellContent)[][]) => {
-  return values.map((value) => {
-    if (isNumber(value)) return value.toFixed(2);
-    return value;
-  }) as EmployeeOutputRow[];
+  return values.map(arr => {
+    return arr.map(v => v?.toString() ?? "");
+  }) as EmployeeRow[];
 };

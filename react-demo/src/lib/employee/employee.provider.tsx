@@ -14,10 +14,10 @@ import {
   initHFValues,
   formatCellValues,
 } from "./employee.hf";
-import { EmployeeOutputRow } from "./types";
 
 /** input data */
 import { tableData } from "./fixtures/data";
+import { EmployeeRow } from "./types";
 
 type EmployeesProviderProps = PropsWithChildren<{}>;
 
@@ -32,17 +32,18 @@ export const EmployeesStateProvider = ({
     sheetId: number;
     sheetName: string;
   }>(null);
-  const [employees, setEmployees] = useState<EmployeeOutputRow[]>([]);
+  const [employees, setEmployees] = useState<EmployeeRow[]>([]);
   const [totals, setTotals] = useState<string[]>([]);
 
   const runCalculations = useCallback(() => {
     if (!hfReference.current) return;
 
     const { hf, sheetId } = hfReference.current;
-    const calculatedValues = hf.getSheetValues(sheetId);
-    setEmployees(formatCellValues(calculatedValues));
+    const calculated = hf.getSheetValues(sheetId);
+    const formatted = formatCellValues(calculated);
+    setEmployees(formatted);
     setTotals(
-      TOTAL_EXPRESSIONS.map((expression) => {
+      TOTAL_EXPRESSIONS.map(expression => {
         const calculatedValue = hf.calculateFormula(expression, sheetId);
         if (!isNumber(calculatedValue))
           throw new Error("Calculated value is not a number");
@@ -56,7 +57,10 @@ export const EmployeesStateProvider = ({
     if (!hfReference.current) return;
 
     const { hf, sheetId } = hfReference.current;
-    setEmployees(formatCellValues(hf.getSheetSerialized(sheetId)));
+
+    const serialized = hf.getSheetSerialized(sheetId);
+    const formatted = formatCellValues(serialized);
+    setEmployees(formatted);
     setTotals(TOTAL_EXPRESSIONS);
   }, []);
 
@@ -82,8 +86,7 @@ export const EmployeesStateProvider = ({
         totals,
         runCalculations,
         resetCalculations,
-      }}
-    >
+      }}>
       {children}
     </EmployeesContext.Provider>
   );
