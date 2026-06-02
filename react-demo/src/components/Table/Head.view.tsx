@@ -1,9 +1,9 @@
-import * as React from "react";
+import { FC, ReactNode } from "react";
 
 export type HeadProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
-export const HeadView: React.FC<HeadProps> = ({ children }) => {
+export const HeadView: FC<HeadProps> = ({ children }) => {
   return <th>{children}</th>;
 };
