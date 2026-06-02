@@ -1,12 +1,12 @@
-import * as React from "react";
+import { FC, useContext } from "react";
 import { EmployeesContext } from "../../lib/employee";
 
 import "./EmployeeActions.scss";
 
 export type EmployeeActionsProps = {};
 
-export const EmployeeActions: React.FC<EmployeeActionsProps> = () => {
-  const { setCalculationsFlag } = React.useContext(EmployeesContext);
+export const EmployeeActions: FC<EmployeeActionsProps> = () => {
+  const { setCalculationsFlag } = useContext(EmployeesContext);
 
   const handleClickRunCalculations = () => {
     setCalculationsFlag(true);
