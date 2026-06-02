@@ -1,10 +1,10 @@
-import * as React from "react";
+import { FC, ReactNode } from "react";
 
 export type RowProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 };
 
-export const RowView: React.FC<RowProps> = ({ children, className = "" }) => {
+export const RowView: FC<RowProps> = ({ children, className = "" }) => {
   return <tr className={className}>{children}</tr>;
 };
