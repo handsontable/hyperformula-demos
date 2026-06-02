@@ -4,9 +4,7 @@ import { useEmployeesContext } from "../../lib/employee";
 
 import "./EmployeeTable.scss";
 
-export type EmployeeTableProps = {};
-
-export const EmployeeTable: FC<EmployeeTableProps> = () => {
+export const EmployeeTable: FC = () => {
   const { employees, totals } = useEmployeesContext();
 
   return (
@@ -21,10 +19,10 @@ export const EmployeeTable: FC<EmployeeTableProps> = () => {
         </Table.Row>
       </thead>
       <tbody>
-        {employees?.map((item, rowNumber) => (
-          <Table.Row key={rowNumber}>
-            {item.map((cellValue, cellNumber) => (
-              <Table.Cell key={`${cellNumber + 1},${rowNumber}`}>
+        {employees.map((item, rowIndex) => (
+          <Table.Row key={rowIndex}>
+            {item.map((cellValue, colIndex) => (
+              <Table.Cell key={`${rowIndex},${colIndex}`}>
                 {cellValue}
               </Table.Cell>
             ))}
@@ -32,8 +30,8 @@ export const EmployeeTable: FC<EmployeeTableProps> = () => {
         ))}
         <Table.Row className="bold">
           <Table.Cell>Total</Table.Cell>
-          {totals?.map((value, rowNumber) => (
-            <Table.Cell key={`0,${rowNumber}`}>{value}</Table.Cell>
+          {totals.map((value, colIndex) => (
+            <Table.Cell key={`5,${colIndex + 1}`}>{value}</Table.Cell>
           ))}
           <Table.Cell />
           <Table.Cell />
