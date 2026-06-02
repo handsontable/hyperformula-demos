@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Table } from "../../components/Table";
+import * as Table from "../../components/Table";
 import { useEmployeesContext } from "../../lib/employee";
 
 import "./EmployeeTable.scss";
@@ -10,7 +10,7 @@ export const EmployeeTable: FC<EmployeeTableProps> = () => {
   const { employees, totals } = useEmployeesContext();
 
   return (
-    <Table colgroupWidths={[22, 15, 23, 20, 20]}>
+    <Table.Root colgroupWidths={[22, 15, 23, 20, 20]}>
       <thead>
         <Table.Row>
           <Table.Head>Name</Table.Head>
@@ -39,6 +39,6 @@ export const EmployeeTable: FC<EmployeeTableProps> = () => {
           <Table.Cell />
         </Table.Row>
       </tbody>
-    </Table>
+    </Table.Root>
   );
 };
