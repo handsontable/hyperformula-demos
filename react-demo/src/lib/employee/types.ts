@@ -2,8 +2,8 @@ type FormulaType = string;
 
 export type EmployeeRow = [
   string,
-  number,
+  string,
   FormulaType,
   FormulaType,
-  FormulaType
+  FormulaType,
 ];

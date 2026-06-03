@@ -1,19 +1,14 @@
-import * as React from "react";
-import { Table } from "../../components/Table";
-import { EmployeesContext } from "../../lib/employee";
+import { FC } from "react";
+import * as Table from "../../components/Table";
+import { useEmployeesContext } from "../../lib/employee";
 
 import "./EmployeeTable.scss";
 
-export type EmployeeTableProps = {};
-
-export const EmployeeTable: React.FC<EmployeeTableProps> = () => {
-  const {
-    employees,
-    totals,
-  } = React.useContext(EmployeesContext)
+export const EmployeeTable: FC = () => {
+  const { employees, totals } = useEmployeesContext();
 
   return (
-    <Table colgroupWidths={[22, 15, 23, 20, 20]}>
+    <Table.Root colgroupWidths={[22, 15, 23, 20, 20]}>
       <thead>
         <Table.Row>
           <Table.Head>Name</Table.Head>
@@ -24,21 +19,24 @@ export const EmployeeTable: React.FC<EmployeeTableProps> = () => {
         </Table.Row>
       </thead>
       <tbody>
-        {employees?.map((item, rowNumber) =>
-          <Table.Row key={rowNumber}>
-            {item.map((cellValue, cellNumber) => <Table.Cell key={`${cellNumber + 1},${rowNumber}`}>{cellValue}</Table.Cell>)}
+        {employees.map((item, rowIndex) => (
+          <Table.Row key={rowIndex}>
+            {item.map((cellValue, colIndex) => (
+              <Table.Cell key={`${rowIndex},${colIndex}`}>
+                {cellValue}
+              </Table.Cell>
+            ))}
           </Table.Row>
-        )}
+        ))}
         <Table.Row className="bold">
           <Table.Cell>Total</Table.Cell>
-          {totals?.map((value, rowNumber) => (
-              <Table.Cell key={`0,${rowNumber}`}>{value}</Table.Cell>
-            )
-          )}
-          <Table.Cell/>
-          <Table.Cell/>
+          {totals.map((value, colIndex) => (
+            <Table.Cell key={`5,${colIndex + 1}`}>{value}</Table.Cell>
+          ))}
+          <Table.Cell />
+          <Table.Cell />
         </Table.Row>
       </tbody>
-    </Table>
+    </Table.Root>
   );
 };
