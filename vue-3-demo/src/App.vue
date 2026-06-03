@@ -6,8 +6,8 @@ import ActionButton from './components/ActionButton.vue'
 import HfTable from './components/HfTable.vue'
 
 const employeesDataProvider = new EmployeesDataProvider()
-let data: Ref<(string | number)[][]> = ref([])
-let totals: Ref<(string | number)[]> = ref([])
+const data: Ref<(string | number)[][]> = ref([])
+const totals: Ref<(string | number)[]> = ref([])
 reset()
 
 function runCalculations() {
