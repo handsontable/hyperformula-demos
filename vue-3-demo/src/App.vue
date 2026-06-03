@@ -1,35 +1,19 @@
 <script setup lang="ts">
 import 'milligram'
-import { ref, type Ref } from 'vue'
-import { EmployeesDataProvider } from './lib/employees-data-provider'
-import ActionButton from './components/ActionButton.vue'
-import HfTable from './components/HfTable.vue'
-
-const employeesDataProvider = new EmployeesDataProvider()
-const data: Ref<(string | number)[][]> = ref([])
-const totals: Ref<(string | number)[]> = ref([])
-reset()
-
-function runCalculations() {
-  data.value = employeesDataProvider.getTabularData({ calculated: true })
-  totals.value = employeesDataProvider.getTotals({ calculated: true })
-}
-
-function reset() {
-  data.value = employeesDataProvider.getTabularData({ calculated: false })
-  totals.value = employeesDataProvider.getTotals({ calculated: false })
-}
+import { EmployeesProvider } from './lib/employee'
+import { EmployeeActions, EmployeeTable } from './components/EmployeeTable'
 </script>
 
 <template>
-  <main>
-    <ActionButton text="Run calculations" @button-click="runCalculations" />
-    <ActionButton text="Reset" outline @button-click="reset" />
-    <HfTable :data="data" :totals="totals" />
+  <main class="App">
+    <EmployeesProvider>
+      <EmployeeActions />
+      <EmployeeTable />
+    </EmployeesProvider>
   </main>
 </template>
 
-<style scoped>
+<style>
 body {
   font-family: sans-serif;
   counter-reset: row-counter;
