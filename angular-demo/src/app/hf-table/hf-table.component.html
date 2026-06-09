@@ -17,14 +17,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of (employees$ | async); index as r;">
-        <td *ngFor="let cell of row; index as c"><span>{{ cell }}</span></td>
-      </tr>
+      @for (row of employees(); track $index) {
+        <tr>
+          @for (cell of row; track $index) {
+            <td><span>{{ cell }}</span></td>
+          }
+        </tr>
+      }
     </tbody>
     <tfoot>
       <tr>
         <td>Total</td>
-        <td *ngFor="let total of (totals$ | async); index as t">{{ total }}</td>
+        @for (total of totals(); track $index) {
+          <td>{{ total }}</td>
+        }
         <td colspan="2"></td>
       </tr>
     </tfoot>

@@ -15,14 +15,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/example-hf",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "allowedCommonJsDependencies": [
+              "tiny-emitter",
+              "regexp-to-ast"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -41,14 +43,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -61,28 +56,38 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "options": {
-            "browserTarget": "example-hf:build"
+            "buildTarget": "example-hf:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "example-hf:build:production"
+              "buildTarget": "example-hf:build:production"
+            },
+            "development": {
+              "buildTarget": "example-hf:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "example-hf:build"
+            "buildTarget": "example-hf:build"
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": false
   }

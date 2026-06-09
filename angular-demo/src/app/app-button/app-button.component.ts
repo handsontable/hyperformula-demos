@@ -1,11 +1,12 @@
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 
 @Component({
   selector: "app-button",
   templateUrl: "./app-button.component.html",
-  styleUrls: ["./app-button.component.scss"]
+  styleUrls: ["./app-button.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppButton {
-  @Input() outline: boolean;
-  @Input() text: string = "test";
+export class AppButtonComponent {
+  readonly outline = input(false);
+  readonly text = input("");
 }
