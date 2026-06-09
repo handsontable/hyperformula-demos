@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { EmployeesService } from "../employees/employees.service";
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { EmployeesService } from '../employees/employees.service';
+import { AppButtonComponent } from '../app-button/app-button.component';
 
 @Component({
   selector: 'hf-actions',
+  imports: [AppButtonComponent],
   templateUrl: './hf-actions.component.html',
-  styleUrls: ['./hf-actions.component.scss']
+  styleUrls: ['./hf-actions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HfActionsComponent {
-  constructor(private _employeesService: EmployeesService) {}
+  private readonly employeesService = inject(EmployeesService);
 
-  public handleClickRunCalculations() {
-    console.log("handleClickRunCalculations");
-    this._employeesService.calculate();
+  runCalculations() {
+    this.employeesService.calculate();
   }
 
-  public handleClickReset() {
-    console.log("handleClickReset");
-    this._employeesService.reset();
+  reset() {
+    this.employeesService.reset();
   }
 }

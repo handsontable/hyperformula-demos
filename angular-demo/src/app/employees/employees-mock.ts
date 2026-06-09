@@ -1,4 +1,6 @@
-export const EMPLOYEES = [
+import type { Row } from './employees.service';
+
+export const EMPLOYEES: Row[] = [
   [
     "Greg Black",
     4.66,

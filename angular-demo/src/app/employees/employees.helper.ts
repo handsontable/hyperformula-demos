@@ -1,4 +1,5 @@
 import { HyperFormula } from 'hyperformula';
+import type { Row } from './employees.service';
 
 console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
 
@@ -11,6 +12,10 @@ export const initializeHF = (initSheetId: string) => {
   const sheetName = hf.addSheet(initSheetId);
   const sheetId = hf.getSheetId(sheetName);
 
+  if (sheetId === undefined) {
+    throw new Error(`Could not resolve sheet id for "${sheetName}".`);
+  }
+
   return {
     hf,
     sheetName,
@@ -20,6 +25,11 @@ export const initializeHF = (initSheetId: string) => {
 
 export const initializeNamedExpressions = (hf: HyperFormula, sheetName: string) => {
   const sheetId = hf.getSheetId(sheetName);
+
+  if (sheetId === undefined) {
+    throw new Error(`Could not resolve sheet id for "${sheetName}".`);
+  }
+
   const { height } = hf.getSheetDimensions(sheetId);
 
   // Add named expressions for the "TOTAL" row.
@@ -33,7 +43,7 @@ export const initializeNamedExpressions = (hf: HyperFormula, sheetName: string) 
   );
 };
 
-export const initHFValues = (hf: HyperFormula, sheetId: number, data: any[]) => {
+export const initializeHFValues = (hf: HyperFormula, sheetId: number, data: Row[]) => {
   hf.setCellContents(
     {
       row: 0,

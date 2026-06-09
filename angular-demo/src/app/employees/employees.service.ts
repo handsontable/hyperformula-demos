@@ -1,8 +1,7 @@
-import { BehaviorSubject } from "rxjs";
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 
 import {
-  initHFValues,
+  initializeHFValues,
   initializeHF,
   initializeNamedExpressions,
 } from './employees.helper';
@@ -13,19 +12,24 @@ import { HyperFormula } from 'hyperformula';
 const TOTALS = ["=SUM(Year_1)", "=SUM(Year_2)"];
 const EMPLOYEE_SHEET_ID = "employeeSheet";
 
+export type CellValue = string | number;
+export type Row = CellValue[];
+
+const formatValue = (value: unknown): CellValue =>
+  typeof value === "number" ? value.toFixed(2) : String(value);
+
 @Injectable({
   providedIn: "root"
 })
 export class EmployeesService {
-  private hf: HyperFormula;
-  private sheetId: number;
+  private readonly hf: HyperFormula;
+  private readonly sheetId: number;
 
-  private _employees = new BehaviorSubject<any[]>([]);
-  private _totals = new BehaviorSubject<any[]>([]);
-  private dataStore = { employees: [], totals: [] };
+  private readonly _employees = signal<Row[]>([]);
+  private readonly _totals = signal<CellValue[]>([]);
 
-  readonly employees = this._employees.asObservable();
-  readonly totals = this._totals.asObservable();
+  readonly employees = this._employees.asReadonly();
+  readonly totals = this._totals.asReadonly();
 
   constructor() {
     const { hf, sheetId, sheetName } = initializeHF(EMPLOYEE_SHEET_ID);
@@ -34,44 +38,30 @@ export class EmployeesService {
     this.sheetId = sheetId;
 
     // Fill the HyperFormula sheet with data.
-    initHFValues(hf, sheetId, EMPLOYEES);
+    initializeHFValues(hf, sheetId, EMPLOYEES);
 
-    // Add named expressions
+    // Add named expressions.
     initializeNamedExpressions(hf, sheetName);
 
     this.reset();
   }
 
-  public calculate() {
-    this.dataStore.employees = this.hf
+  calculate() {
+    const employees: Row[] = this.hf
       .getSheetValues(this.sheetId)
-      .map(values => {
-        const newValues = [];
+      .map(row => row.map(formatValue));
 
-        values.forEach((value: number) => {
-          if (!isNaN(value)) {
-            newValues.push(value.toFixed(2));
-          } else {
-            newValues.push(value);
-          }
-        });
+    const totals: CellValue[] = TOTALS.map(expression =>
+      formatValue(this.hf.calculateFormula(expression, this.sheetId))
+    );
 
-        return newValues;
-      });
-
-    this.dataStore.totals = TOTALS.map(expression => {
-      return (this.hf.calculateFormula(expression, this.sheetId) as number).toFixed(2);
-    });
-
-    this._employees.next([ ...this.dataStore.employees ]);
-    this._totals.next([ ...this.dataStore.totals ]);
+    this._employees.set(employees);
+    this._totals.set(totals);
   }
 
-  public reset() {
-    this.dataStore.employees = EMPLOYEES;
-    this.dataStore.totals = TOTALS;
-
-    this._employees.next([ ...this.dataStore.employees ]);
-    this._totals.next([ ...this.dataStore.totals ]);
+  reset() {
+    // Clone the mock so the source data is never mutated.
+    this._employees.set(EMPLOYEES.map(row => [...row]));
+    this._totals.set([...TOTALS]);
   }
 }
