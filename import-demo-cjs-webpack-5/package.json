@@ -21,7 +21,7 @@
     "url": "git@github.com:taniarascia/webpack-boilerplate"
   },
   "dependencies": {
-    "hyperformula": "3.3.0"
+    "hyperformula": "3.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",

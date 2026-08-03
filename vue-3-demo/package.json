@@ -16,7 +16,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
-    "hyperformula": "3.3.0",
+    "hyperformula": "3.4.0",
     "milligram": "^1.4.1",
     "vue": "^3.5.32"
   },

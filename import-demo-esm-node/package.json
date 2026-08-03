@@ -8,6 +8,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "hyperformula": "3.3.0"
+    "hyperformula": "3.4.0"
   }
 }

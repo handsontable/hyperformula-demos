@@ -13,6 +13,6 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "hyperformula": "3.3.0"
+    "hyperformula": "3.4.0"
   }
 }

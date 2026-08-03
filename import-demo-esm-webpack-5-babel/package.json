@@ -35,7 +35,7 @@
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-prettier": "^4.2.1",
     "html-webpack-plugin": "^5.5.0",
-    "hyperformula": "3.3.0",
+    "hyperformula": "3.4.0",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^7.8.3",
