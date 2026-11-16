@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-black.svg"/>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-white.svg"/>
-    <img width="280" alt="Logo of HyperFormula" src="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-black.svg"/>
+    <img width="360" alt="Logo of HyperFormula" src="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-black.svg"/>
   </picture>
   <h3>Runnable demos and usage examples for HyperFormula, a headless spreadsheet engine for business web apps.</h3>
 
