@@ -1,3 +1,22 @@
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-black.svg"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-white.svg"/>
+    <img width="280" alt="Logo of HyperFormula" src="https://raw.githubusercontent.com/handsontable/hyperformula/develop/resources/hyperformula-logo-black.svg"/>
+  </picture>
+  <h3>Runnable demos and usage examples for HyperFormula, a headless spreadsheet engine for business web apps.</h3>
+
+  <a href="https://hyperformula.handsontable.com">Website</a>
+  &nbsp;•&nbsp;
+  <a href="https://handsontable.com/docs/hyperformula/">Documentation</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/handsontable/hyperformula">HyperFormula repository</a>
+  &nbsp;•&nbsp;
+  <a href="https://github.com/handsontable/hyperformula/discussions">Community</a>
+</div>
+
+<br>
+
 # hyperformula-demos
 
 This repository contains demos and usage examples for the [HyperFormula](https://github.com/handsontable/hyperformula) library. Some of them are embedded in the [HyperFormula documentation](https://handsontable.github.io/hyperformula/).
