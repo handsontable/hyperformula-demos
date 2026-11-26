@@ -29,26 +29,25 @@ We keep:
 
 The demos on each version branch work with the corresponding version of HyperFormula.
 
+## License key
+
+HyperFormula 4.0 needs a license key. The `gpl-v3` license key no longer works.
+
+The demos don't contain a license key. Each one has this placeholder instead:
+
+```js
+licenseKey: 'your-license-key', // get a key at https://handsontable.com/pricing/?tab=hyperformula
+```
+
+Before you run a demo, replace `your-license-key` with your license key. To get a commercial license key or a free trial, visit [handsontable.com/pricing](https://handsontable.com/pricing/?tab=hyperformula).
+
+Without a valid key, functions return `#LIC!` and license-gated methods, such as `addSheet()`, throw a `LicenseCapabilityMissingError`. For details, see the [License key](https://hyperformula.handsontable.com/guide/license-key.html) guide.
+
 ## Running the demos
 
 Each directory contains one demo. 
 
 *Make sure to use the right version of the demos. E.g. for **hyperformula@1.3.1** you should use the code from branch **1.3.x**.*
-
-### In CodeSandbox.io
-
-The demos are embedded in HyperFormula documentation using CodeSandbox.io so this should be treated as the primary execution environment for the demos.
-
-CodeSandbox.io uses `node@16.12.0` to run the demos as [configured](https://codesandbox.io/docs/configuration#sandbox-configuration) in `sandbox.config.json` file.
-
-The CodeSandbox.io links in the documentation have this form:
-```js
-`https://codesandbox.io/embed/github/handsontable/hyperformula-demos/tree/${branchName}/${directory}?autoresize=1&fontsize=11&hidenavigation=1&theme=light&view=preview`
-```
-
-E.g. a link for demo **basic-usage** from branch **2.0.x** looks like this:
-https://codesandbox.io/embed/github/handsontable/hyperformula-demos/tree/2.0.x/basic-usage?autoresize=1&fontsize=11&hidenavigation=1&theme=light&view=preview
-
 
 ### Locally
 

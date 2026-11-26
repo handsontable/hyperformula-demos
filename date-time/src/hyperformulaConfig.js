@@ -8,7 +8,7 @@ console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-
 const hf = HyperFormula.buildEmpty({
   parseDateTime: customParseDate,
   dateFormats: ["MMM D YY"],
-  licenseKey: "gpl-v3"
+  licenseKey: 'your-license-key', // get a key at https://handsontable.com/pricing/?tab=hyperformula
 });
 
 // Add a new sheet and get its id.
