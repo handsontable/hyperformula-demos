@@ -10,7 +10,8 @@ let sheetId = undefined;
 
 export function setupHyperFormula() {
   // Create a HyperFormula instance
-  hf = HyperFormula.buildEmpty({licenseKey: 'gpl-v3'});
+  // Replace 'your-license-key' with your license key. Get a key at https://handsontable.com/pricing/?tab=hyperformula
+  hf = HyperFormula.buildEmpty({licenseKey: 'your-license-key'});
 
   // Add an empty sheet
   const sheetName = hf.addSheet('Mortgage Calculator');

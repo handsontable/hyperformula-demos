@@ -7,7 +7,7 @@ console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-
 export const initializeHF = (initSheetId: string) => {
   const hf = markRaw(
     HyperFormula.buildEmpty({
-      licenseKey: 'gpl-v3'
+      licenseKey: 'your-license-key', // get a key at https://handsontable.com/pricing/?tab=hyperformula
     })
   )
 

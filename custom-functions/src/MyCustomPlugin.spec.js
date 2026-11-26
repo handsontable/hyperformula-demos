@@ -1,11 +1,14 @@
 import { HyperFormula } from 'hyperformula';
 import { MyCustomPlugin, MyCustomPluginTranslations } from './MyCustomPlugin';
 
+// Replace 'your-license-key' with your license key. Get a key at https://handsontable.com/pricing/?tab=hyperformula
+const LICENSE_KEY = 'your-license-key';
+
 describe('GREET function', () => {
   it('works for a non-empty string', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([['Anthony', '=GREET(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([['Anthony', '=GREET(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 })).toEqual('👋 Hello, Anthony!');
   });
@@ -13,7 +16,7 @@ describe('GREET function', () => {
   it('propagates #DIV/0! error', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([['=1/0', '=GREET(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([['=1/0', '=GREET(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR');
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#DIV/0!');
@@ -22,7 +25,7 @@ describe('GREET function', () => {
   it('propagates #CYCLE! error', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([['=B1', '=GREET(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([['=B1', '=GREET(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR');
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#CYCLE!');
@@ -33,7 +36,7 @@ describe('DOUBLE_RANGE function', () => {
   it('works for a single number', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([[42, '=DOUBLE_RANGE(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([[42, '=DOUBLE_RANGE(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 })).toEqual(84);
   });
@@ -45,7 +48,7 @@ describe('DOUBLE_RANGE function', () => {
       [1, '=DOUBLE_RANGE(A1:A3)'],
       [2],
       [3],
-    ], { licenseKey: 'gpl-v3' });
+    ], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 })).toEqual(2);
     expect(engine.getCellValue({ sheet: 0, row: 1, col: 1 })).toEqual(4);
@@ -59,7 +62,7 @@ describe('DOUBLE_RANGE function', () => {
       [1, '=DOUBLE_RANGE(A1:A3)'],
       ['I should not be here'],
       [3],
-    ], { licenseKey: 'gpl-v3' });
+    ], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR');
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#VALUE!');
@@ -68,7 +71,7 @@ describe('DOUBLE_RANGE function', () => {
   it('propagates #DIV/0! error', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([['=1/0', '=DOUBLE_RANGE(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([['=1/0', '=DOUBLE_RANGE(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR');
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#DIV/0!');
@@ -77,7 +80,7 @@ describe('DOUBLE_RANGE function', () => {
   it('propagates #CYCLE! error', () => {
     HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
-    const engine = HyperFormula.buildFromArray([['=B1', '=DOUBLE_RANGE(A1)']], { licenseKey: 'gpl-v3' });
+    const engine = HyperFormula.buildFromArray([['=B1', '=DOUBLE_RANGE(A1)']], { licenseKey: LICENSE_KEY });
 
     expect(engine.getCellValueType({ sheet: 0, row: 0, col: 1 })).toEqual('ERROR');
     expect(engine.getCellValue({ sheet: 0, row: 0, col: 1 }).value).toEqual('#CYCLE!');

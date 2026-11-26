@@ -9,7 +9,7 @@ HyperFormula.registerFunctionPlugin(MyCustomPlugin, MyCustomPluginTranslations);
 
 // Create an empty HyperFormula instance.
 const hf = HyperFormula.buildEmpty({
-  licenseKey: 'gpl-v3'
+  licenseKey: 'your-license-key', // get a key at https://handsontable.com/pricing/?tab=hyperformula
 });
 
 // Add a new sheet and get its id.

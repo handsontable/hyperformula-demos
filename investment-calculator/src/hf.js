@@ -5,7 +5,7 @@ export function setupHF() {
   console.log(`%c Using HyperFormula ${HyperFormula.version}`, 'color: blue; font-weight: bold');
 
   const hf = HyperFormula.buildEmpty({
-    licenseKey: 'gpl-v3',
+    licenseKey: 'your-license-key', // get a key at https://handsontable.com/pricing/?tab=hyperformula
   });
 
   const sheetName = hf.addSheet('main');
