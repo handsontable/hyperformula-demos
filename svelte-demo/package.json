@@ -26,6 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"hyperformula": "3.5.0"
+		"hyperformula": "4.0.0"
 	}
 }
